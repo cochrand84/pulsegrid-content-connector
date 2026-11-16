@@ -15,14 +15,14 @@
 
 defined( 'ABSPATH' ) || exit;
 
-$pgcc_hook = 'pgcc_sidebar_' . sanitize_key( $args['sidebar'] );
-if ( 'cta' !== $args['sidebar'] && has_action( $pgcc_hook ) ) {
+$pgcc_mode = sanitize_key( $args['sidebar'] );
+if ( 'cta' !== $pgcc_mode && has_action( 'pgcc_sidebar_' . $pgcc_mode ) ) {
 	/**
-	 * Render an add-on sidebar mode.
+	 * Render an add-on sidebar mode: pgcc_sidebar_{mode}.
 	 *
 	 * @param array $args View arguments.
 	 */
-	do_action( $pgcc_hook, $args );
+	do_action( 'pgcc_sidebar_' . $pgcc_mode, $args );
 } else {
 	pgcc_template( 'sidebar-cta', $args );
 }
