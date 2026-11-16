@@ -5,7 +5,7 @@
  * all share the same result.
  *
  * URL parameters (kept compatible with the ?mayo-id= pattern):
- *   ?mayo-id=CON-20372695   article
+ *   ?mayo-id=CON-12345678   article
  *   ?mayo-q=diabetes        search
  *   ?mayo-page=2            search results page
  *

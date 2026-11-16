@@ -1,68 +1,74 @@
 {
-  "meta": {
-    "contentType": "Symptom",
-    "docId": "DEMO-10005",
-    "originalUrl": "",
-    "updateDate": "2026-09-25T00:00:00",
-    "publicationDate": "2020-02-10T00:00:00",
-    "controlWords": {
-      "category": [
-        {
-          "title": "Condition",
-          "mcvId": "23457",
-          "keyword": {
-            "title": "Diagnosable condition",
-            "mcvId": "1092",
-            "keyword": {
-              "title": "Pain NOS",
-              "mcvId": "1770",
-              "keyword": {
-                "title": "Heartburn",
-                "mcvId": "9005"
-              }
-            }
-          }
-        },
-        {
-          "title": "Anatomical structure",
-          "mcvId": "23451",
-          "keyword": {
-            "title": "Body system",
-            "mcvId": "23450",
-            "keyword": {
-              "title": "Digestive system",
-              "mcvId": "1137"
-            }
-          }
-        }
-      ]
-    }
-  },
-  "body": {
-    "section": [
-      {
-        "sectionHead": "Overview",
-        "html": [
-          "<p>Heartburn is a burning feeling in the chest, often after eating, that can move up toward the throat. It happens when stomach acid flows back into the esophagus.</p>"
-        ]
-      },
-      {
-        "sectionHead": "Common triggers",
-        "html": [
-          "<ul><li>Large or late-night meals</li><li>Spicy, fatty or fried foods</li><li>Alcohol and caffeine</li><li>Lying down soon after eating</li></ul>"
-        ]
-      },
-      {
-        "sectionHead": "When to see a doctor",
-        "html": [
-          "<p>See a health care professional if heartburn happens more than twice a week, makes swallowing difficult, or comes with weight loss. <strong>Chest pain with shortness of breath, sweating, or pain in the arm or jaw can be a heart attack. Call 911.</strong></p>"
-        ]
+ "meta": {
+  "contentType": "Symptom",
+  "docId": "DEMO-10005",
+  "originalUrl": "",
+  "updateDate": "2026-11-16T00:00:00",
+  "publicationDate": "2020-02-10T00:00:00",
+  "controlWords": {
+   "category": [
+    {
+     "title": "Health conditions",
+     "mcvId": "7000",
+     "keyword": {
+      "title": "Diagnosed conditions",
+      "mcvId": "7001",
+      "keyword": {
+       "title": "Pain",
+       "mcvId": "7002",
+       "keyword": {
+        "title": "Heartburn",
+        "mcvId": "9005"
+       }
       }
+     }
+    },
+    {
+     "title": "Body",
+     "mcvId": "7100",
+     "keyword": {
+      "title": "Body systems",
+      "mcvId": "7101",
+      "keyword": {
+       "title": "Digestive system",
+       "mcvId": "7103"
+      }
+     }
+    }
+   ]
+  }
+ },
+ "body": {
+  "section": [
+   {
+    "sectionHead": "The short version",
+    "html": [
+     "<p>That hot, sour feeling rising behind the breastbone happens when stomach acid splashes up into the food pipe (esophagus). An occasional episode is common and usually nothing serious.</p>"
     ]
-  },
-  "title": "Heartburn",
-  "abstract": "<p>What heartburn feels like, common triggers and when it may need attention.</p>",
-  "encoding": "UTF-8",
-  "language": "en",
-  "_demo": "Placeholder content written for the Pulsegrid plugin demo. Not Mayo Clinic content. Not medical advice."
+   },
+   {
+    "sectionHead": "Common triggers",
+    "html": [
+     "<ul><li>Big portions, especially close to bedtime</li><li>Rich, greasy or spicy dishes</li><li>Coffee, alcohol and fizzy drinks</li><li>Bending over or lying flat right after eating</li></ul>"
+    ]
+   },
+   {
+    "sectionHead": "Small changes that help",
+    "html": [
+     "<ul><li>Eat smaller meals and stop eating two to three hours before bed</li><li>Raise the head of your bed a few inches</li><li>Loosen tight waistbands and belts</li></ul>"
+    ]
+   },
+   {
+    "sectionHead": "Don't wait if",
+    "html": [
+     "<p>Chest pressure comes with shortness of breath, sweating, or an ache spreading into an arm or the jaw. Call 911: these can be signs of a heart attack. Also see a clinician if heartburn shows up most weeks or swallowing becomes difficult.</p>"
+    ]
+   }
+  ]
+ },
+ "title": "Heartburn",
+ "abstract": "What causes that burning feeling after meals, and the changes that usually help.",
+ "encoding": "UTF-8",
+ "language": "en",
+ "_demo": "Sample content written for the Pulsegrid plugin demo. Not Mayo Clinic content. Not medical advice."
 }

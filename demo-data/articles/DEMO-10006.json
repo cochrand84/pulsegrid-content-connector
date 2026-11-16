@@ -1,64 +1,64 @@
 {
-  "meta": {
-    "contentType": "Symptom",
-    "docId": "DEMO-10006",
-    "originalUrl": "",
-    "updateDate": "2026-06-05T00:00:00",
-    "publicationDate": "2019-09-30T00:00:00",
-    "controlWords": {
-      "category": [
-        {
-          "title": "Condition",
-          "mcvId": "23457",
-          "keyword": {
-            "title": "Diagnosable condition",
-            "mcvId": "1092",
-            "keyword": {
-              "title": "Pain NOS",
-              "mcvId": "1770"
-            }
-          }
-        },
-        {
-          "title": "Anatomical structure",
-          "mcvId": "23451",
-          "keyword": {
-            "title": "Body system",
-            "mcvId": "23450",
-            "keyword": {
-              "title": "Musculoskeletal system",
-              "mcvId": "9202"
-            }
-          }
-        }
-      ]
-    }
-  },
-  "body": {
-    "section": [
-      {
-        "sectionHead": "Overview",
-        "html": [
-          "<p>Low back pain is very common. It often follows a strain from lifting, twisting or long periods of sitting, and usually improves within a few weeks.</p>"
-        ]
-      },
-      {
-        "sectionHead": "Self-care",
-        "html": [
-          "<ul><li>Stay gently active rather than resting in bed</li><li>Apply heat or cold for comfort</li><li>Pay attention to posture when sitting and lifting</li></ul>"
-        ]
-      },
-      {
-        "sectionHead": "When to see a doctor",
-        "html": [
-          "<p>Get care promptly if back pain follows a fall or injury, comes with numbness or weakness in the legs, fever, or changes in bladder or bowel control.</p>"
-        ]
+ "meta": {
+  "contentType": "Symptom",
+  "docId": "DEMO-10006",
+  "originalUrl": "",
+  "updateDate": "2026-11-16T00:00:00",
+  "publicationDate": "2019-09-30T00:00:00",
+  "controlWords": {
+   "category": [
+    {
+     "title": "Health conditions",
+     "mcvId": "7000",
+     "keyword": {
+      "title": "Diagnosed conditions",
+      "mcvId": "7001",
+      "keyword": {
+       "title": "Pain",
+       "mcvId": "7002"
       }
+     }
+    },
+    {
+     "title": "Body",
+     "mcvId": "7100",
+     "keyword": {
+      "title": "Body systems",
+      "mcvId": "7101",
+      "keyword": {
+       "title": "Musculoskeletal system",
+       "mcvId": "9202"
+      }
+     }
+    }
+   ]
+  }
+ },
+ "body": {
+  "section": [
+   {
+    "sectionHead": "The short version",
+    "html": [
+     "<p>A sore lower back is one of the most common reasons people see a clinician. Most episodes come from strained muscles or ligaments and ease on their own over days to weeks.</p>"
     ]
-  },
-  "title": "Low back pain",
-  "abstract": "An overview of everyday low back pain and steps that often help.",
-  "encoding": "UTF-8",
-  "language": "en",
-  "_demo": "Placeholder content written for the Pulsegrid plugin demo. Not Mayo Clinic content. Not medical advice."
+   },
+   {
+    "sectionHead": "What helps most people",
+    "html": [
+     "<ul><li>Keep moving with gentle walks instead of staying in bed</li><li>Use a heating pad or a cold pack, whichever feels better</li><li>Lift with your legs and keep loads close to your body</li><li>Stand up and stretch every so often if you sit for long periods</li></ul>"
+    ]
+   },
+   {
+    "sectionHead": "Get care promptly if",
+    "html": [
+     "<p>The pain follows a fall or injury, or comes with numbness in the legs or groin, trouble controlling your bladder or bowels, fever, or pain that keeps getting worse.</p>"
+    ]
+   }
+  ]
+ },
+ "title": "Low back pain",
+ "abstract": "Most back pain eases with time and movement. Here's what helps and when to get care.",
+ "encoding": "UTF-8",
+ "language": "en",
+ "_demo": "Sample content written for the Pulsegrid plugin demo. Not Mayo Clinic content. Not medical advice."
 }

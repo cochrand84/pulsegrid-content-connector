@@ -1,82 +1,82 @@
 {
-  "meta": {
-    "contentType": "Disease",
-    "docId": "DEMO-10001",
-    "originalUrl": "",
-    "updateDate": "2026-09-12T00:00:00",
-    "publicationDate": "2024-03-01T00:00:00",
-    "controlWords": {
-      "category": [
-        {
-          "title": "Condition",
-          "mcvId": "23457",
-          "keyword": {
-            "title": "Diagnosable condition",
-            "mcvId": "1092",
-            "keyword": {
-              "title": "Allergy",
-              "mcvId": "9001"
-            }
-          }
-        },
-        {
-          "title": "Anatomical structure",
-          "mcvId": "23451",
-          "keyword": {
-            "title": "Body system",
-            "mcvId": "23450",
-            "keyword": {
-              "title": "Respiratory system",
-              "mcvId": "9201"
-            }
-          }
-        }
-      ]
-    }
-  },
-  "body": {
-    "section": [
-      {
-        "sectionHead": "Overview",
-        "html": [
-          "<p>Seasonal allergies happen when the immune system reacts to airborne substances such as tree, grass or weed pollen. Symptoms often come and go with the seasons.</p>"
-        ],
-        "popupMedia": [
-          {
-            "image": {
-              "id": "GUID-0d3f6c2a-1b44-4c55-9a10-6f2e8d1c0a01",
-              "alt": "Illustration of pollen drifting from a flowering plant",
-              "caption": "Pollen counts tend to be highest on warm, dry, windy days.",
-              "title": "Illustration of pollen drifting from a flowering plant",
-              "width": 640,
-              "height": 360
-            }
-          }
-        ]
-      },
-      {
-        "sectionHead": "Symptoms",
-        "html": [
-          "<ul><li>Sneezing and a runny or stuffy nose</li><li>Itchy, watery eyes</li><li>Itchy throat or ears</li><li>Tiredness from poor sleep</li></ul>"
-        ]
-      },
-      {
-        "sectionHead": "Self-care",
-        "html": [
-          "<ul><li>Check local pollen forecasts and limit time outdoors on high-count days</li><li>Keep windows closed during peak season</li><li>Shower and change clothes after time outside</li><li>Ask a pharmacist about over-the-counter options</li></ul>"
-        ]
-      },
-      {
-        "sectionHead": "When to see a doctor",
-        "html": [
-          "<p>Talk with a health care professional if symptoms interfere with sleep or daily activities, last for months, or come with wheezing or shortness of breath.</p>"
-        ]
+ "meta": {
+  "contentType": "Disease",
+  "docId": "DEMO-10001",
+  "originalUrl": "",
+  "updateDate": "2026-11-16T00:00:00",
+  "publicationDate": "2024-03-01T00:00:00",
+  "controlWords": {
+   "category": [
+    {
+     "title": "Health conditions",
+     "mcvId": "7000",
+     "keyword": {
+      "title": "Diagnosed conditions",
+      "mcvId": "7001",
+      "keyword": {
+       "title": "Allergy",
+       "mcvId": "9001"
       }
+     }
+    },
+    {
+     "title": "Body",
+     "mcvId": "7100",
+     "keyword": {
+      "title": "Body systems",
+      "mcvId": "7101",
+      "keyword": {
+       "title": "Respiratory system",
+       "mcvId": "9201"
+      }
+     }
+    }
+   ]
+  }
+ },
+ "body": {
+  "section": [
+   {
+    "sectionHead": "The short version",
+    "html": [
+     "<p>When trees, grasses and weeds release pollen, some people's bodies treat it as a threat. The result can be weeks or months each year of sniffles and itchy eyes that make it hard to feel your best.</p>"
+    ],
+    "popupMedia": [
+     {
+      "image": {
+       "id": "GUID-0d3f6c2a-1b44-4c55-9a10-6f2e8d1c0a01",
+       "alt": "Illustration of pollen drifting from a flowering plant",
+       "caption": "Breezy, dry days often carry the most pollen.",
+       "title": "Illustration of pollen drifting from a flowering plant",
+       "width": 640,
+       "height": 360
+      }
+     }
     ]
-  },
-  "title": "Seasonal allergies",
-  "abstract": "<p>What seasonal allergies are, common triggers, and everyday ways people manage symptoms.</p>",
-  "encoding": "UTF-8",
-  "language": "en",
-  "_demo": "Placeholder content written for the Pulsegrid plugin demo. Not Mayo Clinic content. Not medical advice."
+   },
+   {
+    "sectionHead": "What you might notice",
+    "html": [
+     "<ul><li>Sneezing fits, especially outdoors</li><li>A drippy or blocked nose</li><li>Eyes that itch, water or turn red</li><li>Feeling worn out after nights of poor sleep</li></ul>"
+    ]
+   },
+   {
+    "sectionHead": "What tends to help",
+    "html": [
+     "<ul><li>Keep windows closed on breezy days when counts are up</li><li>Shower and change clothes after time outside</li><li>Ask a pharmacist which over-the-counter options fit you and how to use them</li></ul>"
+    ]
+   },
+   {
+    "sectionHead": "Talk with a clinician if",
+    "html": [
+     "<p>Symptoms last beyond the season, home steps aren't enough, or you also wheeze or feel short of breath.</p>"
+    ]
+   }
+  ]
+ },
+ "title": "Seasonal allergies",
+ "abstract": "Why pollen season brings sniffles and itchy eyes, and simple ways to feel better.",
+ "encoding": "UTF-8",
+ "language": "en",
+ "_demo": "Sample content written for the Pulsegrid plugin demo. Not Mayo Clinic content. Not medical advice."
 }

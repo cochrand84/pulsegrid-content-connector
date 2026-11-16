@@ -1,48 +1,48 @@
 {
-  "meta": {
-    "contentType": "Healthy Lifestyle",
-    "docId": "DEMO-10008",
-    "originalUrl": "",
-    "updateDate": "2026-05-22T00:00:00",
-    "publicationDate": "2017-07-01T00:00:00",
-    "controlWords": {
-      "category": [
-        {
-          "title": "Lifestyle",
-          "mcvId": "1006",
-          "keyword": {
-            "title": "Sun safety",
-            "mcvId": "9008"
-          }
-        }
-      ]
+ "meta": {
+  "contentType": "Healthy Lifestyle",
+  "docId": "DEMO-10008",
+  "originalUrl": "",
+  "updateDate": "2026-11-16T00:00:00",
+  "publicationDate": "2017-07-01T00:00:00",
+  "controlWords": {
+   "category": [
+    {
+     "title": "Healthy living",
+     "mcvId": "7200",
+     "keyword": {
+      "title": "Sun safety",
+      "mcvId": "9008"
+     }
     }
-  },
-  "body": {
-    "section": [
-      {
-        "sectionHead": "Overview",
-        "html": [
-          "<p>Ultraviolet (UV) light from the sun can burn skin and, over time, damage it. A few simple habits go a long way.</p>"
-        ]
-      },
-      {
-        "sectionHead": "Everyday habits",
-        "html": [
-          "<ul><li>Use a broad-spectrum sunscreen and reapply as directed</li><li>Seek shade during midday hours</li><li>Wear a hat, sunglasses and protective clothing</li></ul>"
-        ]
-      },
-      {
-        "sectionHead": "Check your skin",
-        "html": [
-          "<p>Ask a health care professional about any new spot or a mole that changes in size, shape or color.</p>"
-        ]
-      }
+   ]
+  }
+ },
+ "body": {
+  "section": [
+   {
+    "sectionHead": "The short version",
+    "html": [
+     "<p>Ultraviolet rays can burn skin in minutes, and the damage adds up over the years as wrinkles, spots and a higher risk of skin cancer. Protection works best as a daily habit, even on cloudy days.</p>"
     ]
-  },
-  "title": "Sun protection basics",
-  "abstract": "Everyday ways to protect your skin from the sun.",
-  "encoding": "UTF-8",
-  "language": "en",
-  "_demo": "Placeholder content written for the Pulsegrid plugin demo. Not Mayo Clinic content. Not medical advice."
+   },
+   {
+    "sectionHead": "Everyday protection",
+    "html": [
+     "<ul><li>Use a broad-spectrum sunscreen, SPF 30 or higher, and put more on every two hours or after swimming</li><li>Look for shade around midday</li><li>Wear a wide-brimmed hat, sunglasses and lightweight long sleeves</li><li>Skip tanning beds</li></ul>"
+    ]
+   },
+   {
+    "sectionHead": "Keep an eye on your skin",
+    "html": [
+     "<p>Show a clinician any spot that is new, changing or bleeding, or that simply looks different from your other moles.</p>"
+    ]
+   }
+  ]
+ },
+ "title": "Sun protection basics",
+ "abstract": "Daily habits that protect your skin from sun damage.",
+ "encoding": "UTF-8",
+ "language": "en",
+ "_demo": "Sample content written for the Pulsegrid plugin demo. Not Mayo Clinic content. Not medical advice."
 }

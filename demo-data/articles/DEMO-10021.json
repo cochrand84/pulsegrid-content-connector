@@ -1,82 +1,76 @@
 {
-  "meta": {
-    "contentType": "Article",
-    "docId": "DEMO-10021",
-    "originalUrl": "",
-    "updateDate": "2026-10-09T00:00:00",
-    "publicationDate": "2015-11-30T00:00:00",
-    "controlWords": {
-      "category": [
-        {
-          "title": "Tests and procedures",
-          "mcvId": "9301",
-          "keyword": {
-            "title": "Rehabilitation",
-            "mcvId": "9308",
-            "keyword": {
-              "title": "Cardiac rehabilitation",
-              "mcvId": "9309"
-            }
-          }
-        },
-        {
-          "title": "Anatomical structure",
-          "mcvId": "23451",
-          "keyword": {
-            "title": "Body system",
-            "mcvId": "23450",
-            "keyword": {
-              "title": "Cardiovascular system",
-              "mcvId": "1145"
-            }
-          }
-        }
-      ]
-    }
-  },
-  "body": {
-    "section": [
-      {
-        "sectionHead": "Overview",
-        "html": [
-          "<p>Cardiac rehabilitation is a supervised program of exercise, education and support for people recovering from a heart attack, heart surgery or other heart conditions.</p>"
-        ],
-        "popupMedia": [
-          {
-            "image": {
-              "id": "GUID-9e5c4f6a-7b8d-4e9f-b0a1-2c3d4e5f6a14",
-              "alt": "Illustration of a stethoscope",
-              "caption": "Programs usually run several weeks, a few sessions a week.",
-              "title": "Illustration of a stethoscope",
-              "width": 640,
-              "height": 360
-            }
-          }
-        ]
-      },
-      {
-        "sectionHead": "What it includes",
-        "html": [
-          "<ul><li>Monitored exercise</li><li>Education on heart-healthy eating and medicines</li><li>Support for stress and lifestyle changes</li></ul>"
-        ]
-      },
-      {
-        "sectionHead": "Benefits",
-        "html": [
-          "<p>Taking part can improve strength and energy, lower the risk of future heart problems, and help people return to everyday activities with confidence.</p>"
-        ]
-      },
-      {
-        "sectionHead": "Getting started",
-        "html": [
-          "<p>Ask your cardiologist or primary care provider for a referral.</p>"
-        ]
+ "meta": {
+  "contentType": "Article",
+  "docId": "DEMO-10021",
+  "originalUrl": "",
+  "updateDate": "2026-11-16T00:00:00",
+  "publicationDate": "2015-11-30T00:00:00",
+  "controlWords": {
+   "category": [
+    {
+     "title": "Tests and procedures",
+     "mcvId": "9301",
+     "keyword": {
+      "title": "Rehabilitation",
+      "mcvId": "9308",
+      "keyword": {
+       "title": "Cardiac rehabilitation",
+       "mcvId": "9309"
       }
+     }
+    },
+    {
+     "title": "Body",
+     "mcvId": "7100",
+     "keyword": {
+      "title": "Body systems",
+      "mcvId": "7101",
+      "keyword": {
+       "title": "Heart and blood vessels",
+       "mcvId": "7102"
+      }
+     }
+    }
+   ]
+  }
+ },
+ "body": {
+  "section": [
+   {
+    "sectionHead": "What it is",
+    "html": [
+     "<p>Cardiac rehab is a medically supervised program that helps people get stronger after a heart attack, heart surgery or certain heart conditions. A team of nurses, exercise specialists and dietitians tailors it to you.</p>"
+    ],
+    "popupMedia": [
+     {
+      "image": {
+       "id": "GUID-9e5c4f6a-7b8d-4e9f-b0a1-2c3d4e5f6a14",
+       "alt": "Illustration of a stethoscope",
+       "caption": "Sessions usually happen a few times a week over two to three months.",
+       "title": "Illustration of a stethoscope",
+       "width": 640,
+       "height": 360
+      }
+     }
     ]
-  },
-  "title": "Cardiac rehabilitation",
-  "abstract": "How a supervised cardiac rehab program helps people recover after a heart event.",
-  "encoding": "UTF-8",
-  "language": "en",
-  "_demo": "Placeholder content written for the Pulsegrid plugin demo. Not Mayo Clinic content. Not medical advice."
+   },
+   {
+    "sectionHead": "What's included",
+    "html": [
+     "<ul><li>Exercise sessions with heart monitoring</li><li>Coaching on food, medicines and quitting tobacco</li><li>Help with stress and the emotions that can follow a heart event</li></ul>"
+    ]
+   },
+   {
+    "sectionHead": "Why it's worth it",
+    "html": [
+     "<p>People who complete rehab often feel more confident and have more energy, and they're less likely to end up back in the hospital. Ask your cardiologist for a referral.</p>"
+    ]
+   }
+  ]
+ },
+ "title": "Cardiac rehabilitation",
+ "abstract": "How supervised exercise and coaching help people recover after a heart event.",
+ "encoding": "UTF-8",
+ "language": "en",
+ "_demo": "Sample content written for the Pulsegrid plugin demo. Not Mayo Clinic content. Not medical advice."
 }

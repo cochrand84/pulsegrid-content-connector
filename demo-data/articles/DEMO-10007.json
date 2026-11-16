@@ -1,64 +1,64 @@
 {
-  "meta": {
-    "contentType": "Article",
-    "docId": "DEMO-10007",
-    "originalUrl": "",
-    "updateDate": "2026-10-10T00:00:00",
-    "publicationDate": "2018-04-12T00:00:00",
-    "controlWords": {
-      "category": [
-        {
-          "title": "Lifestyle",
-          "mcvId": "1006",
-          "keyword": {
-            "title": "Fitness",
-            "mcvId": "1090",
-            "keyword": {
-              "title": "Physical activity",
-              "mcvId": "127048"
-            }
-          }
-        }
-      ]
-    }
-  },
-  "body": {
-    "section": [
-      {
-        "sectionHead": "Getting started",
-        "html": [
-          "<p>Walking is an easy way to be more active. Start with short walks and build up gradually toward about 150 minutes a week.</p>"
-        ],
-        "popupMedia": [
-          {
-            "image": {
-              "id": "GUID-3e8a1d55-6b2c-4a9e-9d33-7c1a2b3c0a07",
-              "alt": "Illustration of a walking path through a park",
-              "caption": "Choose a safe, comfortable route and supportive shoes.",
-              "title": "Illustration of a walking path through a park",
-              "width": 640,
-              "height": 360
-            }
-          }
-        ]
-      },
-      {
-        "sectionHead": "Make it a habit",
-        "html": [
-          "<ul><li>Schedule walks like appointments</li><li>Walk with a friend or pet</li><li>Track your progress</li><li>Vary your route to keep it interesting</li></ul>"
-        ]
-      },
-      {
-        "sectionHead": "Safety",
-        "html": [
-          "<p>If you have a heart condition or other health concerns, check with a health care professional before starting a new exercise program.</p>"
-        ]
+ "meta": {
+  "contentType": "Article",
+  "docId": "DEMO-10007",
+  "originalUrl": "",
+  "updateDate": "2026-11-16T00:00:00",
+  "publicationDate": "2018-04-12T00:00:00",
+  "controlWords": {
+   "category": [
+    {
+     "title": "Healthy living",
+     "mcvId": "7200",
+     "keyword": {
+      "title": "Fitness",
+      "mcvId": "7201",
+      "keyword": {
+       "title": "Exercise",
+       "mcvId": "7203"
       }
+     }
+    }
+   ]
+  }
+ },
+ "body": {
+  "section": [
+   {
+    "sectionHead": "Getting started",
+    "html": [
+     "<p>Walking is one of the easiest ways to become more active. Begin with what feels comfortable, even ten minutes, and add a few minutes each week. Many adults work up to about two and a half hours of brisk activity spread across the week.</p>"
+    ],
+    "popupMedia": [
+     {
+      "image": {
+       "id": "GUID-3e8a1d55-6b2c-4a9e-9d33-7c1a2b3c0a07",
+       "alt": "Illustration of a walking path through a park",
+       "caption": "A safe route and comfortable shoes are all you need to begin.",
+       "title": "Illustration of a walking path through a park",
+       "width": 640,
+       "height": 360
+      }
+     }
     ]
-  },
-  "title": "Walking for fitness",
-  "abstract": "How to start and stick with a walking routine.",
-  "encoding": "UTF-8",
-  "language": "en",
-  "_demo": "Placeholder content written for the Pulsegrid plugin demo. Not Mayo Clinic content. Not medical advice."
+   },
+   {
+    "sectionHead": "Ways to keep it going",
+    "html": [
+     "<ul><li>Put walks on your calendar</li><li>Invite a friend, family member or dog along</li><li>Use a step counter or app to see your progress</li><li>Try new routes and a few hills as you get stronger</li></ul>"
+    ]
+   },
+   {
+    "sectionHead": "Check with your care team first if",
+    "html": [
+     "<p>You have a heart or lung condition, joint problems, or it's been a long time since you were active.</p>"
+    ]
+   }
+  ]
+ },
+ "title": "Walking for fitness",
+ "abstract": "How to start a walking routine and keep it going.",
+ "encoding": "UTF-8",
+ "language": "en",
+ "_demo": "Sample content written for the Pulsegrid plugin demo. Not Mayo Clinic content. Not medical advice."
 }

@@ -24,7 +24,7 @@ interface PGCC_Source {
 	public function search( $query, $top = 10, $skip = 0 );
 
 	/**
-	 * Fetch one piece of content by Mayo content ID (e.g. CON-20372695).
+	 * Fetch one piece of content by Mayo content ID (e.g. CON-12345678).
 	 *
 	 * @param string $content_id Content ID.
 	 * @return array|WP_Error { meta: array, body: { section: array[] }, title, abstract, ... }

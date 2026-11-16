@@ -1,60 +1,60 @@
 {
-  "meta": {
-    "contentType": "Healthy Lifestyle",
-    "docId": "DEMO-10003",
-    "originalUrl": "",
-    "updateDate": "2026-10-02T00:00:00",
-    "publicationDate": "2022-06-20T00:00:00",
-    "controlWords": {
-      "category": [
-        {
-          "title": "Lifestyle",
-          "mcvId": "1006",
-          "keyword": {
-            "title": "Sleep",
-            "mcvId": "9003"
-          }
-        }
-      ]
+ "meta": {
+  "contentType": "Healthy Lifestyle",
+  "docId": "DEMO-10003",
+  "originalUrl": "",
+  "updateDate": "2026-11-16T00:00:00",
+  "publicationDate": "2022-06-20T00:00:00",
+  "controlWords": {
+   "category": [
+    {
+     "title": "Healthy living",
+     "mcvId": "7200",
+     "keyword": {
+      "title": "Sleep",
+      "mcvId": "9003"
+     }
     }
-  },
-  "body": {
-    "section": [
-      {
-        "sectionHead": "Why sleep matters",
-        "html": [
-          "<p>Regular, good-quality sleep supports mood, concentration and overall health. Most adults do best with seven or more hours a night.</p>"
-        ],
-        "popupMedia": [
-          {
-            "image": {
-              "id": "GUID-9c1b4e77-2a3d-4f6a-b812-4e5d6c7b0a03",
-              "alt": "Illustration of a crescent moon over a calm bedroom window",
-              "caption": "A cool, dark, quiet room can make it easier to fall asleep.",
-              "title": "Illustration of a crescent moon over a calm bedroom window",
-              "width": 640,
-              "height": 360
-            }
-          }
-        ]
-      },
-      {
-        "sectionHead": "Habits that help",
-        "html": [
-          "<ul><li>Keep a consistent sleep and wake time, even on weekends</li><li>Limit caffeine later in the day</li><li>Put screens away before bed</li><li>Build a short wind-down routine</li></ul>"
-        ]
-      },
-      {
-        "sectionHead": "When to get help",
-        "html": [
-          "<p>Talk with a health care professional if trouble sleeping lasts for weeks, or if you snore loudly or feel very sleepy during the day.</p>"
-        ]
+   ]
+  }
+ },
+ "body": {
+  "section": [
+   {
+    "sectionHead": "Why it's worth the effort",
+    "html": [
+     "<p>Sleep is when the body and brain recover. Most adults do best with seven or more hours a night, and small daily habits make a big difference in how rested you feel.</p>"
+    ],
+    "popupMedia": [
+     {
+      "image": {
+       "id": "GUID-9c1b4e77-2a3d-4f6a-b812-4e5d6c7b0a03",
+       "alt": "Illustration of a crescent moon over a calm bedroom window",
+       "caption": "Many people sleep best in a room that's cool, dark and quiet.",
+       "title": "Illustration of a crescent moon over a calm bedroom window",
+       "width": 640,
+       "height": 360
       }
+     }
     ]
-  },
-  "title": "Better sleep habits",
-  "abstract": "Simple routines that support a good night's sleep.",
-  "encoding": "UTF-8",
-  "language": "en",
-  "_demo": "Placeholder content written for the Pulsegrid plugin demo. Not Mayo Clinic content. Not medical advice."
+   },
+   {
+    "sectionHead": "Habits to try",
+    "html": [
+     "<ul><li>Go to bed and get up around the same times every day</li><li>Save coffee, tea and energy drinks for the morning</li><li>Dim the lights and set your phone aside for the last half hour</li><li>Keep the bed for sleep, not work or scrolling</li></ul>"
+    ]
+   },
+   {
+    "sectionHead": "When to ask for help",
+    "html": [
+     "<p>Mention it at your next visit if you snore loudly, wake up gasping, or feel sleepy during the day even after a full night in bed.</p>"
+    ]
+   }
+  ]
+ },
+ "title": "Better sleep habits",
+ "abstract": "Small daily habits that help you fall asleep and wake up rested.",
+ "encoding": "UTF-8",
+ "language": "en",
+ "_demo": "Sample content written for the Pulsegrid plugin demo. Not Mayo Clinic content. Not medical advice."
 }

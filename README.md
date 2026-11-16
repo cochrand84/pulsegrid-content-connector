@@ -61,7 +61,7 @@ define( 'PGCC_TRCKR',   'your-trckr-value' );
 |-----|------|
 | `/health-library/` | Landing page with featured topics |
 | `/health-library/?mayo-q=diabetes` | Search results (`&mayo-page=2` for paging) |
-| `/health-library/?mayo-id=CON-20372695` | Article |
+| `/health-library/?mayo-id=CON-12345678` | Article |
 
 ## Shortcode options
 
@@ -69,7 +69,7 @@ define( 'PGCC_TRCKR',   'your-trckr-value' );
 [pulsegrid sidebar="none|cta" featured="12"]
 [pulsegrid_search placeholder="Search health topics…"]
 [pulsegrid_topics heading="Popular topics" limit="6"]
-[pulsegrid_topics topics="Heart attack|heart attack; Colonoscopy|CON-20373087"]
+[pulsegrid_topics topics="Heart attack|heart attack; Colonoscopy|CON-12345678"]
 ```
 
 Edit the saved topic list under **Settings → Pulsegrid → Topic buttons**, one per line as `Label | search terms` or `Label | CONTENT-ID`. The **Shortcodes & help** tab in the same screen documents every option.
@@ -82,13 +82,13 @@ article pages links readers to your own pages for that topic: a **Find a
 Provider** link and a list of **Services We Offer**.
 
 Mayo tags every article with category codes (`mcvId`s) that run from broad to
-specific, e.g. *Condition › Diagnosable condition `1092` › Pain NOS `1770` ›
-Gas and gas pains `2926`*. With Pro you map codes to links under **Settings →
+specific, e.g. *a body system › a group of conditions › one specific condition*, each
+with its own numeric code. With Pro you map codes to links under **Settings →
 Pulsegrid → Sidebar links**:
 
 - Edit rows in the table (topic, one or more codes, provider and service links), reorder them, filter them
 - **Import / export CSV** — download the template, fill it in a spreadsheet, save as *CSV UTF-8*, import (merge or replace)
-- The **most specific** mapped code on an article wins, so generic codes like `1092` act as a catch-all; ties go to the higher row
+- The **most specific** mapped code on an article wins, so codes for broad groups act as a catch-all; ties go to the higher row
 - A row with `*` as its code is the default when nothing matches
 - Administrators see a **category inspector** under each article listing its codes and which row matched — the easy way to find codes to map
 

@@ -1,68 +1,68 @@
 {
-  "meta": {
-    "contentType": "Symptom",
-    "docId": "DEMO-10012",
-    "originalUrl": "",
-    "updateDate": "2026-10-28T00:00:00",
-    "publicationDate": "2014-05-20T00:00:00",
-    "controlWords": {
-      "category": [
-        {
-          "title": "Condition",
-          "mcvId": "23457",
-          "keyword": {
-            "title": "Diagnosable condition",
-            "mcvId": "1092",
-            "keyword": {
-              "title": "Cerebrovascular disease",
-              "mcvId": "9106",
-              "keyword": {
-                "title": "Stroke",
-                "mcvId": "9107"
-              }
-            }
-          }
-        },
-        {
-          "title": "Anatomical structure",
-          "mcvId": "23451",
-          "keyword": {
-            "title": "Body system",
-            "mcvId": "23450",
-            "keyword": {
-              "title": "Nervous system",
-              "mcvId": "9203"
-            }
-          }
-        }
-      ]
-    }
-  },
-  "body": {
-    "section": [
-      {
-        "sectionHead": "Call 911",
-        "html": [
-          "<p><strong>A stroke is an emergency. Call 911 right away and note the time symptoms started.</strong> Some treatments only work if given within hours.</p>"
-        ]
-      },
-      {
-        "sectionHead": "BE FAST",
-        "html": [
-          "<ul><li><strong>B</strong>alance: sudden loss of balance or coordination</li><li><strong>E</strong>yes: sudden vision loss or double vision</li><li><strong>F</strong>ace: one side of the face droops</li><li><strong>A</strong>rms: one arm drifts down or is weak</li><li><strong>S</strong>peech: slurred or strange speech</li><li><strong>T</strong>ime: call 911 now</li></ul>"
-        ]
-      },
-      {
-        "sectionHead": "Lower your risk",
-        "html": [
-          "<ul><li>Keep blood pressure under control</li><li>Do not smoke</li><li>Manage diabetes and cholesterol</li><li>Stay physically active</li></ul>"
-        ]
+ "meta": {
+  "contentType": "Symptom",
+  "docId": "DEMO-10012",
+  "originalUrl": "",
+  "updateDate": "2026-11-16T00:00:00",
+  "publicationDate": "2014-05-20T00:00:00",
+  "controlWords": {
+   "category": [
+    {
+     "title": "Health conditions",
+     "mcvId": "7000",
+     "keyword": {
+      "title": "Diagnosed conditions",
+      "mcvId": "7001",
+      "keyword": {
+       "title": "Cerebrovascular disease",
+       "mcvId": "9106",
+       "keyword": {
+        "title": "Stroke",
+        "mcvId": "9107"
+       }
       }
+     }
+    },
+    {
+     "title": "Body",
+     "mcvId": "7100",
+     "keyword": {
+      "title": "Body systems",
+      "mcvId": "7101",
+      "keyword": {
+       "title": "Nervous system",
+       "mcvId": "9203"
+      }
+     }
+    }
+   ]
+  }
+ },
+ "body": {
+  "section": [
+   {
+    "sectionHead": "Act fast",
+    "html": [
+     "<p>A stroke happens when blood can't reach part of the brain, either because a vessel is blocked or because it bleeds. Treatment works best when it starts quickly, so call 911 right away and note when the symptoms began.</p>"
     ]
-  },
-  "title": "Stroke warning signs",
-  "abstract": "Use BE FAST to spot the signs of a stroke and get help quickly.",
-  "encoding": "UTF-8",
-  "language": "en",
-  "_demo": "Placeholder content written for the Pulsegrid plugin demo. Not Mayo Clinic content. Not medical advice."
+   },
+   {
+    "sectionHead": "Remember BE FAST",
+    "html": [
+     "<ul><li><strong>B</strong>alance: sudden unsteadiness or dizziness</li><li><strong>E</strong>yes: blurred, doubled or lost vision</li><li><strong>F</strong>ace: one side droops when the person smiles</li><li><strong>A</strong>rms: one arm drifts down when both are raised</li><li><strong>S</strong>peech: slurred, jumbled or hard to understand</li><li><strong>T</strong>ime: call 911 now</li></ul>"
+    ]
+   },
+   {
+    "sectionHead": "While you wait",
+    "html": [
+     "<p>Stay with the person, don't give them food, drink or medicine, and keep track of when symptoms started so you can tell the paramedics.</p>"
+    ]
+   }
+  ]
+ },
+ "title": "Stroke warning signs",
+ "abstract": "How to spot a stroke with BE FAST and what to do while help is on the way.",
+ "encoding": "UTF-8",
+ "language": "en",
+ "_demo": "Sample content written for the Pulsegrid plugin demo. Not Mayo Clinic content. Not medical advice."
 }

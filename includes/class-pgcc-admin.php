@@ -458,7 +458,7 @@ class PGCC_Admin {
 		<ul class="pgcc-help">
 			<li><?php echo wp_kses( __( 'One topic per line: <code>Button label | what it opens</code>.', 'pulsegrid-content-connector' ), array( 'code' => array() ) ); ?></li>
 			<li><?php echo wp_kses( __( '<strong>Search:</strong> <code>Heart attack | heart attack</code> opens search results for “heart attack”. If the label and the search are the same, the label alone is enough: <code>Asthma</code>.', 'pulsegrid-content-connector' ), array( 'code' => array(), 'strong' => array() ) ); ?></li>
-			<li><?php echo wp_kses( __( '<strong>Article:</strong> <code>Colonoscopy | CON-20373087</code> opens that article directly. The ID is the <code>mayo-id</code> value in an article’s address.', 'pulsegrid-content-connector' ), array( 'code' => array(), 'strong' => array() ) ); ?></li>
+			<li><?php echo wp_kses( __( '<strong>Article:</strong> <code>Colonoscopy | CON-12345678</code> opens that article directly. The ID is the <code>mayo-id</code> value in an article’s address.', 'pulsegrid-content-connector' ), array( 'code' => array(), 'strong' => array() ) ); ?></li>
 			<li><?php esc_html_e( 'Buttons appear in this order. Lines starting with # are ignored.', 'pulsegrid-content-connector' ); ?></li>
 		</ul>
 
@@ -572,7 +572,7 @@ class PGCC_Admin {
 			</p>
 			<?php $this->code_box( '[pulsegrid_topics]' ); ?>
 			<?php $this->code_box( '[pulsegrid_topics heading="Popular topics" limit="6"]' ); ?>
-			<?php $this->code_box( '[pulsegrid_topics topics="Heart attack|heart attack; Colonoscopy|CON-20373087"]' ); ?>
+			<?php $this->code_box( '[pulsegrid_topics topics="Heart attack|heart attack; Colonoscopy|CON-12345678"]' ); ?>
 			<?php
 			$this->attr_table(
 				array(
@@ -590,7 +590,7 @@ class PGCC_Admin {
 			$this->attr_table(
 				array(
 					array( 'mayo-q', __( 'search terms', 'pulsegrid-content-connector' ), add_query_arg( 'mayo-q', 'colonoscopy', $lib ) ),
-					array( 'mayo-id', __( 'content ID', 'pulsegrid-content-connector' ), add_query_arg( 'mayo-id', 'CON-20373087', $lib ) ),
+					array( 'mayo-id', __( 'content ID', 'pulsegrid-content-connector' ), add_query_arg( 'mayo-id', 'CON-12345678', $lib ) ),
 					array( 'mayo-page', __( 'page number', 'pulsegrid-content-connector' ), __( 'Page of search results, with mayo-q.', 'pulsegrid-content-connector' ) ),
 				)
 			);

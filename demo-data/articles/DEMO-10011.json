@@ -1,74 +1,74 @@
 {
-  "meta": {
-    "contentType": "Symptom",
-    "docId": "DEMO-10011",
-    "originalUrl": "",
-    "updateDate": "2026-10-28T00:00:00",
-    "publicationDate": "2014-02-11T00:00:00",
-    "controlWords": {
-      "category": [
-        {
-          "title": "Condition",
-          "mcvId": "23457",
-          "keyword": {
-            "title": "Diagnosable condition",
-            "mcvId": "1092",
-            "keyword": {
-              "title": "Vascular disease",
-              "mcvId": "9103",
-              "keyword": {
-                "title": "Coronary artery disease",
-                "mcvId": "9105"
-              }
-            }
-          }
-        },
-        {
-          "title": "Anatomical structure",
-          "mcvId": "23451",
-          "keyword": {
-            "title": "Body system",
-            "mcvId": "23450",
-            "keyword": {
-              "title": "Cardiovascular system",
-              "mcvId": "1145"
-            }
-          }
-        }
-      ]
-    }
-  },
-  "body": {
-    "section": [
-      {
-        "sectionHead": "Call 911",
-        "html": [
-          "<p><strong>If you think you or someone else is having a heart attack, call 911 right away.</strong> Do not drive yourself to the hospital. Fast treatment saves heart muscle.</p>"
-        ]
-      },
-      {
-        "sectionHead": "Common warning signs",
-        "html": [
-          "<ul><li>Chest pain, pressure or squeezing that lasts more than a few minutes or comes and goes</li><li>Pain or discomfort in the arms, back, neck, jaw or stomach</li><li>Shortness of breath</li><li>Cold sweat, nausea or lightheadedness</li></ul>"
-        ]
-      },
-      {
-        "sectionHead": "Signs can differ",
-        "html": [
-          "<p>Women, older adults and people with diabetes may have less typical symptoms, such as unusual tiredness, shortness of breath or nausea without obvious chest pain.</p>"
-        ]
-      },
-      {
-        "sectionHead": "Lower your risk",
-        "html": [
-          "<ul><li>Manage blood pressure, cholesterol and blood sugar</li><li>Do not smoke</li><li>Stay active and eat a heart-healthy diet</li></ul>"
-        ]
+ "meta": {
+  "contentType": "Symptom",
+  "docId": "DEMO-10011",
+  "originalUrl": "",
+  "updateDate": "2026-11-16T00:00:00",
+  "publicationDate": "2014-02-11T00:00:00",
+  "controlWords": {
+   "category": [
+    {
+     "title": "Health conditions",
+     "mcvId": "7000",
+     "keyword": {
+      "title": "Diagnosed conditions",
+      "mcvId": "7001",
+      "keyword": {
+       "title": "Vascular disease",
+       "mcvId": "9103",
+       "keyword": {
+        "title": "Coronary artery disease",
+        "mcvId": "9105"
+       }
       }
+     }
+    },
+    {
+     "title": "Body",
+     "mcvId": "7100",
+     "keyword": {
+      "title": "Body systems",
+      "mcvId": "7101",
+      "keyword": {
+       "title": "Heart and blood vessels",
+       "mcvId": "7102"
+      }
+     }
+    }
+   ]
+  }
+ },
+ "body": {
+  "section": [
+   {
+    "sectionHead": "Call 911 first",
+    "html": [
+     "<p><strong>If you think you or someone near you is having a heart attack, call 911 instead of driving to the hospital.</strong> Paramedics can start treatment on the way, and every minute counts.</p>"
     ]
-  },
-  "title": "Heart attack warning signs",
-  "abstract": "Know the warning signs of a heart attack and what to do right away.",
-  "encoding": "UTF-8",
-  "language": "en",
-  "_demo": "Placeholder content written for the Pulsegrid plugin demo. Not Mayo Clinic content. Not medical advice."
+   },
+   {
+    "sectionHead": "What it can feel like",
+    "html": [
+     "<ul><li>Pressure, tightness or aching in the center of the chest that lasts or keeps coming back</li><li>Discomfort spreading to a shoulder, arm, the jaw, neck or back</li><li>Feeling out of breath</li><li>Breaking into a sweat, feeling sick to your stomach or dizzy</li></ul>"
+    ]
+   },
+   {
+    "sectionHead": "It doesn't always look like the movies",
+    "html": [
+     "<p>Some people, especially women, older adults and people with diabetes, have milder or unusual signs, such as sudden exhaustion or nausea with little chest pain. Take these seriously too.</p>"
+    ]
+   },
+   {
+    "sectionHead": "Protecting your heart",
+    "html": [
+     "<ul><li>Keep blood pressure, cholesterol and blood sugar in check</li><li>Quit smoking</li><li>Move more and choose heart-friendly foods</li></ul>"
+    ]
+   }
+  ]
+ },
+ "title": "Heart attack warning signs",
+ "abstract": "What a heart attack can feel like, and why calling 911 comes first.",
+ "encoding": "UTF-8",
+ "language": "en",
+ "_demo": "Sample content written for the Pulsegrid plugin demo. Not Mayo Clinic content. Not medical advice."
 }

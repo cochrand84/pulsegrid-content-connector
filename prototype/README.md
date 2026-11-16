@@ -18,7 +18,7 @@ docker compose up -d
 |-----|---------------|
 | `http://localhost:8090/` | Landing page with featured articles |
 | `http://localhost:8090/?q=diabetes` | Search results |
-| `http://localhost:8090/?mayo-id=CON-20372695` | Article |
+| `http://localhost:8090/?mayo-id=CON-12345678` | Article |
 | `http://localhost:8090/index-cta.php` | Same, with the specialist sidebar |
 
 `doctors.php` maps Mayo `mcvId` category IDs to specialties and contains

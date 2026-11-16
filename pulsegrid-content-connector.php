@@ -3,7 +3,7 @@
  * Plugin Name:       Pulsegrid Content Connector
  * Plugin URI:        https://github.com/cochrand84/pulsegrid-content-connector
  * Description:       Display Mayo Clinic Health Information Library content on any WordPress site through the Mayo Clinic GBS Realtime (Content Delivery) API. Requires your own licensed API credentials from Mayo Clinic. Includes a demo mode with sample data.
- * Version:           0.6.0
+ * Version:           0.6.1
  * Requires at least: 6.0
  * Requires PHP:      7.4
  * Author:            David Cochran
@@ -21,7 +21,7 @@
 
 defined( 'ABSPATH' ) || exit;
 
-define( 'PGCC_VERSION', '0.6.0' );
+define( 'PGCC_VERSION', '0.6.1' );
 define( 'PGCC_FILE', __FILE__ );
 define( 'PGCC_DIR', plugin_dir_path( __FILE__ ) );
 define( 'PGCC_URL', plugin_dir_url( __FILE__ ) );

@@ -1,74 +1,74 @@
 {
-  "meta": {
-    "contentType": "Disease",
-    "docId": "DEMO-10018",
-    "originalUrl": "",
-    "updateDate": "2026-09-08T00:00:00",
-    "publicationDate": "2015-04-21T00:00:00",
-    "controlWords": {
-      "category": [
-        {
-          "title": "Condition",
-          "mcvId": "23457",
-          "keyword": {
-            "title": "Diagnosable condition",
-            "mcvId": "1092",
-            "keyword": {
-              "title": "Pain NOS",
-              "mcvId": "1770",
-              "keyword": {
-                "title": "Kidney stones",
-                "mcvId": "9111"
-              }
-            }
-          }
-        },
-        {
-          "title": "Anatomical structure",
-          "mcvId": "23451",
-          "keyword": {
-            "title": "Body system",
-            "mcvId": "23450",
-            "keyword": {
-              "title": "Urinary system",
-              "mcvId": "9204"
-            }
-          }
-        }
-      ]
-    }
-  },
-  "body": {
-    "section": [
-      {
-        "sectionHead": "Overview",
-        "html": [
-          "<p>Kidney stones are hard deposits of minerals and salts that form inside the kidneys. Small stones may pass on their own; larger ones may need treatment.</p>"
-        ]
-      },
-      {
-        "sectionHead": "Common symptoms",
-        "html": [
-          "<ul><li>Severe pain in the side and back, below the ribs</li><li>Pain that spreads to the lower belly or groin</li><li>Pink, red or brown urine</li><li>Nausea and vomiting</li></ul>"
-        ]
-      },
-      {
-        "sectionHead": "Prevention",
-        "html": [
-          "<ul><li>Drink enough water throughout the day</li><li>Limit salt</li><li>Ask your care team whether diet changes make sense for your stone type</li></ul>"
-        ]
-      },
-      {
-        "sectionHead": "When to get help",
-        "html": [
-          "<p>Seek care right away for pain so severe you cannot sit still, pain with fever and chills, or trouble passing urine.</p>"
-        ]
+ "meta": {
+  "contentType": "Disease",
+  "docId": "DEMO-10018",
+  "originalUrl": "",
+  "updateDate": "2026-11-16T00:00:00",
+  "publicationDate": "2015-04-21T00:00:00",
+  "controlWords": {
+   "category": [
+    {
+     "title": "Health conditions",
+     "mcvId": "7000",
+     "keyword": {
+      "title": "Diagnosed conditions",
+      "mcvId": "7001",
+      "keyword": {
+       "title": "Pain",
+       "mcvId": "7002",
+       "keyword": {
+        "title": "Kidney stones",
+        "mcvId": "9111"
+       }
       }
+     }
+    },
+    {
+     "title": "Body",
+     "mcvId": "7100",
+     "keyword": {
+      "title": "Body systems",
+      "mcvId": "7101",
+      "keyword": {
+       "title": "Urinary system",
+       "mcvId": "9204"
+      }
+     }
+    }
+   ]
+  }
+ },
+ "body": {
+  "section": [
+   {
+    "sectionHead": "The short version",
+    "html": [
+     "<p>Minerals in urine can clump into crystals that grow into small, hard stones. Tiny ones may pass unnoticed; larger ones can cause intense pain as they travel toward the bladder.</p>"
     ]
-  },
-  "title": "Kidney stones",
-  "abstract": "What kidney stones are, common symptoms, and steps that may help prevent them.",
-  "encoding": "UTF-8",
-  "language": "en",
-  "_demo": "Placeholder content written for the Pulsegrid plugin demo. Not Mayo Clinic content. Not medical advice."
+   },
+   {
+    "sectionHead": "What you might notice",
+    "html": [
+     "<ul><li>Waves of sharp pain in the back or side, sometimes spreading toward the groin</li><li>Blood in the urine, which can make it look pinkish or brownish</li><li>Feeling queasy or throwing up</li><li>Needing to urinate often, or a burning feeling when you go</li></ul>"
+    ]
+   },
+   {
+    "sectionHead": "Lowering your chances",
+    "html": [
+     "<ul><li>Drink enough that your urine stays pale</li><li>Go easy on salt</li><li>Ask your care team whether diet changes make sense for the kind of stone you had</li></ul>"
+    ]
+   },
+   {
+    "sectionHead": "Get urgent care if",
+    "html": [
+     "<p>The pain is more than you can manage at home, especially with a fever, vomiting, or little or no urine.</p>"
+    ]
+   }
+  ]
+ },
+ "title": "Kidney stones",
+ "abstract": "How kidney stones form, what passing one feels like and how to prevent another.",
+ "encoding": "UTF-8",
+ "language": "en",
+ "_demo": "Sample content written for the Pulsegrid plugin demo. Not Mayo Clinic content. Not medical advice."
 }

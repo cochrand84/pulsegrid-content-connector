@@ -1,70 +1,70 @@
 {
-  "meta": {
-    "contentType": "Test",
-    "docId": "DEMO-10015",
-    "originalUrl": "",
-    "updateDate": "2026-08-14T00:00:00",
-    "publicationDate": "2013-09-09T00:00:00",
-    "controlWords": {
-      "category": [
-        {
-          "title": "Tests and procedures",
-          "mcvId": "9301",
-          "keyword": {
-            "title": "Endoscopy",
-            "mcvId": "9302",
-            "keyword": {
-              "title": "Colonoscopy",
-              "mcvId": "9303"
-            }
-          }
-        },
-        {
-          "title": "Anatomical structure",
-          "mcvId": "23451",
-          "keyword": {
-            "title": "Gastrointestinal tract",
-            "mcvId": "138500",
-            "keyword": {
-              "title": "Intestine",
-              "mcvId": "1452"
-            }
-          }
-        }
-      ]
-    }
-  },
-  "body": {
-    "section": [
-      {
-        "sectionHead": "Overview",
-        "html": [
-          "<p>A colonoscopy uses a thin, flexible tube with a camera to look inside the colon and rectum. It can find and often remove polyps before they turn into cancer.</p>"
-        ]
-      },
-      {
-        "sectionHead": "Why it is done",
-        "html": [
-          "<ul><li>Colorectal cancer screening, often starting at age 45 for people at average risk</li><li>Looking into bleeding, pain or changes in bowel habits</li><li>Follow-up after earlier findings</li></ul>"
-        ]
-      },
-      {
-        "sectionHead": "Preparing",
-        "html": [
-          "<p>Your bowel needs to be empty. You will get instructions for a clear-liquid diet and a bowel prep the day before. Plan for someone to drive you home.</p>"
-        ]
-      },
-      {
-        "sectionHead": "After the test",
-        "html": [
-          "<p>Most people go home the same day. Mild bloating or gas is common. Call your care team for severe pain, fever or heavy bleeding.</p>"
-        ]
+ "meta": {
+  "contentType": "Test",
+  "docId": "DEMO-10015",
+  "originalUrl": "",
+  "updateDate": "2026-11-16T00:00:00",
+  "publicationDate": "2013-09-09T00:00:00",
+  "controlWords": {
+   "category": [
+    {
+     "title": "Tests and procedures",
+     "mcvId": "9301",
+     "keyword": {
+      "title": "Endoscopy",
+      "mcvId": "9302",
+      "keyword": {
+       "title": "Colonoscopy",
+       "mcvId": "9303"
       }
+     }
+    },
+    {
+     "title": "Body",
+     "mcvId": "7100",
+     "keyword": {
+      "title": "Digestive tract",
+      "mcvId": "7106",
+      "keyword": {
+       "title": "Intestines",
+       "mcvId": "7105"
+      }
+     }
+    }
+   ]
+  }
+ },
+ "body": {
+  "section": [
+   {
+    "sectionHead": "What it is",
+    "html": [
+     "<p>During a colonoscopy, a specialist guides a slim, bendable scope with a light and camera through the large intestine. It's the main way to find polyps and remove them before they can turn into cancer.</p>"
     ]
-  },
-  "title": "Colonoscopy",
-  "abstract": "Why a colonoscopy is done, how to prepare, and what to expect.",
-  "encoding": "UTF-8",
-  "language": "en",
-  "_demo": "Placeholder content written for the Pulsegrid plugin demo. Not Mayo Clinic content. Not medical advice."
+   },
+   {
+    "sectionHead": "Why you might have one",
+    "html": [
+     "<ul><li>Routine colorectal cancer screening, which many adults start at 45</li><li>Checking on bleeding, belly pain or a change in bowel habits</li><li>A follow-up after polyps were found before</li></ul>"
+    ]
+   },
+   {
+    "sectionHead": "Getting ready",
+    "html": [
+     "<p>The day before, you'll stick to clear liquids and drink a prep that empties the bowel. Most people get sedation, so plan for someone to drive you home.</p>"
+    ]
+   },
+   {
+    "sectionHead": "Afterward",
+    "html": [
+     "<p>Feeling bloated for a few hours is normal. Call your care team for heavy bleeding, fever or belly pain that gets worse.</p>"
+    ]
+   }
+  ]
+ },
+ "title": "Colonoscopy",
+ "abstract": "Why colonoscopy is done, how to prepare and what to expect afterward.",
+ "encoding": "UTF-8",
+ "language": "en",
+ "_demo": "Sample content written for the Pulsegrid plugin demo. Not Mayo Clinic content. Not medical advice."
 }

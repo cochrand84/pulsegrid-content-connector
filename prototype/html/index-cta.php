@@ -11,7 +11,7 @@
  *
  * Modes (driven by query string):
  *   ?q=diabetes           -> Search results page
- *   ?mayo-id=CON-20372638 -> Single article display page
+ *   ?mayo-id=CON-12345678 -> Single article display page
  *   (no params)           -> Search form landing page
  */
 
@@ -223,12 +223,12 @@ function mayo_search(string $query, int $top = 10, int $skip = 0): ?array {
  *   {
  *     "meta": {
  *       "contentType": "Disease"|"Article"|"Answer"|etc,
- *       "docId": "CON-20372638",
+ *       "docId": "CON-12345678",
  *       "originalUrl": "https://www.mayoclinic.org/...",  // use for canonical tag
  *       "updateDate": "2025-09-20T00:00:00",              // MUST be displayed per license
  *       "publicationDate": "...",
  *       "attribution": { "url": "...", "value": "..." },
- *       "termsOfUse": { "docId": "ART-20045381" },        // link required per license
+ *       "termsOfUse": { "docId": "ART-12345678" },        // link required per license
  *       "metaKeywords": { "metaKeyword": [...] },
  *       "controlWords": { ... }
  *     },
@@ -248,7 +248,7 @@ function mayo_search(string $query, int $top = 10, int $skip = 0): ?array {
  * Note: Images referenced in body HTML have GUID IDs — fetch separately if needed:
  *       GET {Base URL}content/{GUID-id}/en
  *
- * @param  string $mayoId  e.g. 'CON-20372638'
+ * @param  string $mayoId  e.g. 'CON-12345678'
  * @return array|null
  */
 function mayo_get_article(string $mayoId): ?array {
@@ -776,7 +776,7 @@ function e(string $value): void {
                     $htmlParts   = $section['html']        ?? [];
                     $htmlContent = is_array($htmlParts) ? implode('', $htmlParts) : (string) $htmlParts;
 
-                    // popupMedia sits inside each section — confirmed from ART-20047732 response
+                    // popupMedia sits inside each section — confirmed from ART-12345678 response
                     // Structure: section.popupMedia[].image{ id, alt, caption, title, width, height }
                     $popupMedia  = $section['popupMedia']  ?? [];
                     ?>

@@ -8,7 +8,7 @@
 defined( 'ABSPATH' ) || exit;
 
 /**
- * Mayo content IDs look like CON-20372695, ART-20047732, SYM-20050922 or
+ * Mayo content IDs look like CON-12345678, ART-12345678, SYM-12345678 or
  * GUID-xxxxxxxx-xxxx-...; allow letters, digits and hyphens only.
  *
  * @param string $id Raw ID.

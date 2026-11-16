@@ -3,6 +3,16 @@
 All notable changes to Pulsegrid Content Connector. Versions follow
 [Semantic Versioning](https://semver.org/); dates are the commit dates.
 
+## 0.6.1 — 2026-11-16
+
+### Changed
+- Demo mode: all 22 sample articles rewritten from scratch, and their
+  category codes replaced with invented ones (7000 and 9000 ranges), so the
+  demo contains no Mayo Clinic text or vocabulary.
+- Help text, README and code comments use placeholder content IDs
+  (`CON-12345678`) instead of real ones.
+- `prototype/`: the reference list of category codes now uses invented codes.
+
 ## 0.6.0 — 2026-11-16
 
 ### Changed

@@ -1,48 +1,48 @@
 {
-  "meta": {
-    "contentType": "Healthy Lifestyle",
-    "docId": "DEMO-10004",
-    "originalUrl": "",
-    "updateDate": "2026-07-18T00:00:00",
-    "publicationDate": "2021-05-04T00:00:00",
-    "controlWords": {
-      "category": [
-        {
-          "title": "Lifestyle",
-          "mcvId": "1006",
-          "keyword": {
-            "title": "Nutrition and healthy eating",
-            "mcvId": "1094"
-          }
-        }
-      ]
+ "meta": {
+  "contentType": "Healthy Lifestyle",
+  "docId": "DEMO-10004",
+  "originalUrl": "",
+  "updateDate": "2026-11-16T00:00:00",
+  "publicationDate": "2021-05-04T00:00:00",
+  "controlWords": {
+   "category": [
+    {
+     "title": "Healthy living",
+     "mcvId": "7200",
+     "keyword": {
+      "title": "Food and nutrition",
+      "mcvId": "7202"
+     }
     }
-  },
-  "body": {
-    "section": [
-      {
-        "sectionHead": "Overview",
-        "html": [
-          "<p>Your body uses water to regulate temperature, cushion joints and carry nutrients. Fluid needs vary with activity, climate and health.</p>"
-        ]
-      },
-      {
-        "sectionHead": "Tips",
-        "html": [
-          "<ul><li>Keep a refillable water bottle nearby</li><li>Drink more during hot weather and exercise</li><li>Fruits and vegetables also provide water</li><li>Pale yellow urine is a common sign of good hydration</li></ul>"
-        ]
-      },
-      {
-        "sectionHead": "Signs of dehydration",
-        "html": [
-          "<p>Thirst, dark urine, dizziness and fatigue can be signs you need more fluids. Confusion, fainting or a rapid heartbeat need prompt medical care.</p>"
-        ]
-      }
+   ]
+  }
+ },
+ "body": {
+  "section": [
+   {
+    "sectionHead": "Why water matters",
+    "html": [
+     "<p>Nearly everything your body does depends on water, from keeping you cool to helping you digest food. Needs vary with your size, activity and the weather, so no single number fits everyone.</p>"
     ]
-  },
-  "title": "Staying hydrated",
-  "abstract": "Why fluids matter and easy ways to drink enough during the day.",
-  "encoding": "UTF-8",
-  "language": "en",
-  "_demo": "Placeholder content written for the Pulsegrid plugin demo. Not Mayo Clinic content. Not medical advice."
+   },
+   {
+    "sectionHead": "Easy ways to drink more",
+    "html": [
+     "<ul><li>Carry a bottle you like and refill it through the day</li><li>Have a glass with each meal</li><li>Add a slice of citrus or cucumber for flavor</li><li>Water-rich foods like melon, soup and leafy greens count too</li></ul>"
+    ]
+   },
+   {
+    "sectionHead": "Signs you may need more",
+    "html": [
+     "<p>Thirst, darker urine, a dry mouth or a headache on a hot day can all be hints to drink up. People with heart or kidney conditions should ask their care team how much is right for them.</p>"
+    ]
+   }
+  ]
+ },
+ "title": "Staying hydrated",
+ "abstract": "Why fluids matter, easy ways to drink more and signs you might need extra.",
+ "encoding": "UTF-8",
+ "language": "en",
+ "_demo": "Sample content written for the Pulsegrid plugin demo. Not Mayo Clinic content. Not medical advice."
 }

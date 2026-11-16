@@ -3,14 +3,14 @@
  * Topic buttons for [pulsegrid_topics].
  *
  * Each topic is a label plus a target. The target is either a Mayo content
- * ID (e.g. CON-20373087), which links straight to that article, or search
+ * ID (e.g. CON-12345678), which links straight to that article, or search
  * terms, which link to a search on the library page.
  *
  * Stored in the `pgcc_topics` option as a list of { label, target }. Edited
  * in Settings → Pulsegrid → Topic buttons as one topic per line:
  *
  *   Heart attack | heart attack
- *   Colonoscopy | CON-20373087
+ *   Colonoscopy | CON-12345678
  *   Asthma                          (label doubles as the search terms)
  *
  * @package PulsegridContentConnector
@@ -65,7 +65,7 @@ class PGCC_Topics {
 	/**
 	 * Is this target a Mayo content ID rather than search terms?
 	 *
-	 * IDs look like CON-20373087, ART-20047744, DEMO-10001: letters, a dash,
+	 * IDs look like CON-12345678, ART-12345678, DEMO-10001: letters, a dash,
 	 * digits. Search terms almost never do.
 	 *
 	 * @param string $target Target.

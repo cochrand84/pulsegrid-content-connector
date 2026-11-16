@@ -4,7 +4,7 @@ Tags: health, medical, patient education, mayo clinic, api
 Requires at least: 6.0
 Tested up to: 7.1
 Requires PHP: 7.4
-Stable tag: 0.6.0
+Stable tag: 0.6.1
 License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -76,6 +76,10 @@ Yes. The optional Pulsegrid Pro add-on changes the sidebar to show links to your
 Yes. On article views the canonical URL and title are passed to those plugins.
 
 == Changelog ==
+
+= 0.6.1 =
+* Demo mode: rewrote all sample articles and replaced their category codes with invented ones, so the demo contains no Mayo Clinic text or vocabulary.
+* Help text and code examples use placeholder content IDs.
 
 = 0.6.0 =
 * Topic-matched sidebar links, CSV import/export and the category inspector have moved to the separate Pulsegrid Pro add-on. The call-to-action sidebar stays in this plugin; sites set to "links" show the call to action until Pro is installed. Saved links are kept and picked up by Pro.

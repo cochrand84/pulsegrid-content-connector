@@ -13,43 +13,44 @@
  * 2. Add it to $specialtyMap with the specialty name
  * 3. Add provider entries to $doctorsBySpecialty under that specialty name
  *
- * mcvId reference — common values seen in responses:
- *   1092  Diagnosable condition (generic)
- *   1104  Pregnancy
- *   1137  Cardiovascular / Digestive system (context-dependent)
+ * mcvId reference — INVENTED example codes (look up real ones with the
+ * plugin's category inspector on your own licensed content):
+ *   7001  Diagnosed conditions (generic)
+ *   7300  Pregnancy
+ *   7103  Cardiovascular / Digestive system (context-dependent)
  *   1255  Quit smoking
- *   1452  Intestine
- *   1770  Pain NOS
- *   1898  Pregnancy week by week
- *   1006  Lifestyle
- *   1090  Fitness
- *   1094  Nutrition and healthy eating
- *   1100  Aerobic exercise
- *   2082  Cancer
- *   2375  Breast cancer
- *   2926  Gas and gas pains
- *   127048 Physical activity
- *   138500 Gastrointestinal tract
+ *   7105  Intestines
+ *   7002  Pain
+ *   7301  Pregnancy timeline
+ *   7200  Healthy living
+ *   7201  Fitness
+ *   7202  Food and nutrition
+ *   7204  Cardio exercise
+ *   7003  Cancer
+ *   7004  Breast cancer
+ *   7006  Gas and bloating
+ *   7203 Exercise
+ *   7106 Digestive tract
  */
 
 // Maps Mayo mcvId -> specialty name
 $specialtyMap = [
-    '1092'   => 'Internal Medicine', // Diagnosable condition (generic)
-    '1104'   => 'OB/GYN',            // Pregnancy
-    '1137'   => 'Cardiology',        // Cardiovascular system
+    '7001'   => 'Internal Medicine', // Diagnosed conditions (generic)
+    '7300'   => 'OB/GYN',            // Pregnancy
+    '7103'   => 'Cardiology',        // Cardiovascular system
     '1255'   => 'Pulmonology',       // Quit smoking / Tobacco use
-    '1452'   => 'Gastroenterology',  // Intestine
-    '1770'   => 'Pain Management',   // Pain NOS
-    '1898'   => 'OB/GYN',            // Pregnancy week by week
-    '1006'   => 'Wellness',          // Lifestyle
-    '1090'   => 'Sports Medicine',   // Fitness
-    '1094'   => 'Nutrition',         // Nutrition and healthy eating
-    '1100'   => 'Sports Medicine',   // Aerobic exercise
-    '2082'   => 'Oncology',          // Cancer
-    '2375'   => 'Oncology',          // Breast cancer
-    '2926'   => 'Gastroenterology',  // Gas and gas pains
-    '127048' => 'Sports Medicine',   // Physical activity
-    '138500' => 'Gastroenterology',  // Gastrointestinal tract
+    '7105'   => 'Gastroenterology',  // Intestines
+    '7002'   => 'Pain Management',   // Pain
+    '7301'   => 'OB/GYN',            // Pregnancy timeline
+    '7200'   => 'Wellness',          // Healthy living
+    '7201'   => 'Sports Medicine',   // Fitness
+    '7202'   => 'Nutrition',         // Food and nutrition
+    '7204'   => 'Sports Medicine',   // Cardio exercise
+    '7003'   => 'Oncology',          // Cancer
+    '7004'   => 'Oncology',          // Breast cancer
+    '7006'   => 'Gastroenterology',  // Gas and bloating
+    '7203' => 'Sports Medicine',   // Exercise
+    '7106' => 'Gastroenterology',  // Digestive tract
 ];
 
 // Maps specialty name -> array of provider placeholder data

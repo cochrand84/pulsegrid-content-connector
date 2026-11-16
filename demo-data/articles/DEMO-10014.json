@@ -1,80 +1,74 @@
 {
-  "meta": {
-    "contentType": "Disease",
-    "docId": "DEMO-10014",
-    "originalUrl": "",
-    "updateDate": "2026-09-18T00:00:00",
-    "publicationDate": "2015-01-26T00:00:00",
-    "controlWords": {
-      "category": [
-        {
-          "title": "Condition",
-          "mcvId": "23457",
-          "keyword": {
-            "title": "Diagnosable condition",
-            "mcvId": "1092",
-            "keyword": {
-              "title": "Lung disease",
-              "mcvId": "9108",
-              "keyword": {
-                "title": "Pneumonia",
-                "mcvId": "9110"
-              }
-            }
-          }
-        },
-        {
-          "title": "Anatomical structure",
-          "mcvId": "23451",
-          "keyword": {
-            "title": "Body system",
-            "mcvId": "23450",
-            "keyword": {
-              "title": "Respiratory system",
-              "mcvId": "9201"
-            }
-          }
-        }
-      ]
-    }
-  },
-  "body": {
-    "section": [
-      {
-        "sectionHead": "Overview",
-        "html": [
-          "<p>Pneumonia is an infection that inflames the air sacs in one or both lungs. It can be caused by bacteria, viruses or fungi and ranges from mild to life-threatening.</p>"
-        ]
-      },
-      {
-        "sectionHead": "Common symptoms",
-        "html": [
-          "<ul><li>Cough, which may bring up mucus</li><li>Fever and chills</li><li>Shortness of breath</li><li>Chest pain when breathing or coughing</li><li>Confusion in older adults</li></ul>"
-        ]
-      },
-      {
-        "sectionHead": "Higher risk",
-        "html": [
-          "<ul><li>Adults 65 and older and young children</li><li>People with chronic heart or lung conditions</li><li>People who smoke or have weakened immune systems</li></ul>"
-        ]
-      },
-      {
-        "sectionHead": "Prevention",
-        "html": [
-          "<p>Vaccines can help prevent some types of pneumonia. Ask your care team which vaccines are right for you.</p>"
-        ]
-      },
-      {
-        "sectionHead": "When to get help",
-        "html": [
-          "<p>Seek care for trouble breathing, chest pain, a persistent fever, or a cough with pus.</p>"
-        ]
+ "meta": {
+  "contentType": "Disease",
+  "docId": "DEMO-10014",
+  "originalUrl": "",
+  "updateDate": "2026-11-16T00:00:00",
+  "publicationDate": "2015-01-26T00:00:00",
+  "controlWords": {
+   "category": [
+    {
+     "title": "Health conditions",
+     "mcvId": "7000",
+     "keyword": {
+      "title": "Diagnosed conditions",
+      "mcvId": "7001",
+      "keyword": {
+       "title": "Lung disease",
+       "mcvId": "9108",
+       "keyword": {
+        "title": "Pneumonia",
+        "mcvId": "9110"
+       }
       }
+     }
+    },
+    {
+     "title": "Body",
+     "mcvId": "7100",
+     "keyword": {
+      "title": "Body systems",
+      "mcvId": "7101",
+      "keyword": {
+       "title": "Respiratory system",
+       "mcvId": "9201"
+      }
+     }
+    }
+   ]
+  }
+ },
+ "body": {
+  "section": [
+   {
+    "sectionHead": "The short version",
+    "html": [
+     "<p>Pneumonia means germs have taken hold deep in the lungs. The tiny air pockets there swell and can fill with fluid, so less oxygen gets through. Some people recover at home with treatment; others need a hospital stay.</p>"
     ]
-  },
-  "title": "Pneumonia",
-  "abstract": "What pneumonia is, who is at higher risk, and signs that need medical care.",
-  "encoding": "UTF-8",
-  "language": "en",
-  "_demo": "Placeholder content written for the Pulsegrid plugin demo. Not Mayo Clinic content. Not medical advice."
+   },
+   {
+    "sectionHead": "What you might notice",
+    "html": [
+     "<ul><li>A cough that brings up yellow, green or rust-colored phlegm</li><li>Fever, sweats or shaking</li><li>Getting winded with little effort</li><li>Sharp chest pain when you take a deep breath</li><li>In older adults, sudden confusion may be the main sign</li></ul>"
+    ]
+   },
+   {
+    "sectionHead": "Lowering your risk",
+    "html": [
+     "<ul><li>Stay current on the vaccines your care team recommends, including flu shots</li><li>Wash your hands often</li><li>Don't smoke</li></ul>"
+    ]
+   },
+   {
+    "sectionHead": "See a clinician if",
+    "html": [
+     "<p>Breathing feels hard, your fever won't break, or you're getting worse instead of better after a few days. Babies, adults over 65 and people with weakened immune systems should be seen sooner.</p>"
+    ]
+   }
+  ]
+ },
+ "title": "Pneumonia",
+ "abstract": "How a lung infection makes breathing harder, and when to be seen.",
+ "encoding": "UTF-8",
+ "language": "en",
+ "_demo": "Sample content written for the Pulsegrid plugin demo. Not Mayo Clinic content. Not medical advice."
 }
