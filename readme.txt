@@ -4,7 +4,7 @@ Tags: health, medical, patient education, mayo clinic, api
 Requires at least: 6.0
 Tested up to: 7.1
 Requires PHP: 7.4
-Stable tag: 0.5.0
+Stable tag: 0.6.0
 License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -22,8 +22,7 @@ Pulsegrid Content Connector lets organizations that license the Mayo Clinic Heal
 * Caching capped at 48 hours, as Mayo Clinic's syndication terms require
 * Limits how many uncached API calls a visitor can trigger, protecting your API quota
 * Canonical tag pointing at Mayo's original URL, update date, copyright and Terms of Use link
-* Optional sidebar: links to your own provider and service pages, matched to each article's topic — edit in a table or import from a spreadsheet (CSV)
-* Category inspector for administrators to see each article's Mayo topic codes
+* Optional sidebar with your own call to action (e.g. "Find a Doctor") beside search results and articles
 * Matches your theme: fonts, text and links come from the theme, and the accent color can be linked to one of the theme's own palette colors (or switch to layout-only and style everything yourself)
 * Every view can be overridden from your theme
 * Demo mode with bundled sample articles, so you can try it without credentials
@@ -68,15 +67,19 @@ Copy any file from the plugin's `templates/` folder into `your-theme/pulsegrid/`
 
 Edit the list under Settings → Pulsegrid → Topic buttons, then add `[pulsegrid_topics]` where you want them, usually next to `[pulsegrid_search]`. The Shortcodes & help tab lists every option.
 
-= How do I map topics to my own pages? =
+= Is there a Pro version? =
 
-Settings → Pulsegrid → Sidebar links. Download the CSV template, fill it in, and import it, or edit rows directly. While logged in as an administrator, each article shows its Mayo category codes and which row matched.
+Yes. The optional Pulsegrid Pro add-on changes the sidebar to show links to your own provider and service pages matched to each article's topic, with a table editor, CSV import/export and an admin-only category inspector. Everything described above works without it. See https://pulsegrid.davidcochran.us/pro/
 
 = Does it work with Yoast SEO or Rank Math? =
 
 Yes. On article views the canonical URL and title are passed to those plugins.
 
 == Changelog ==
+
+= 0.6.0 =
+* Topic-matched sidebar links, CSV import/export and the category inspector have moved to the separate Pulsegrid Pro add-on. The call-to-action sidebar stays in this plugin; sites set to "links" show the call to action until Pro is installed. Saved links are kept and picked up by Pro.
+* New hooks for add-ons: `pgcc_sidebar_modes`, `pgcc_sidebar_{mode}`, `pgcc_library_args`, `pgcc_after_content`, `pgcc_admin_tabs`, `pgcc_admin_tab_{slug}`.
 
 = 0.5.0 =
 * Renamed to Pulsegrid Content Connector (slug `pulsegrid-content-connector`). Shortcodes are now `[pulsegrid]`, `[pulsegrid_search]` and `[pulsegrid_topics]`; settings are under Settings → Pulsegrid; wp-config constants are `PGCC_API_KEY` and `PGCC_TRCKR`; WP-CLI command is `wp pulsegrid`.

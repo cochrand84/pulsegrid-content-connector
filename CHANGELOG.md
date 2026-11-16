@@ -3,6 +3,19 @@
 All notable changes to Pulsegrid Content Connector. Versions follow
 [Semantic Versioning](https://semver.org/); dates are the commit dates.
 
+## 0.6.0 — 2026-11-16
+
+### Changed
+- Topic-matched sidebar links, CSV import/export and the category inspector
+  moved to the separate **Pulsegrid Pro** add-on. The call-to-action sidebar
+  stays free. Sites set to `links` show the call to action until Pro is
+  installed; saved rows (`pgcc_care_links`) are kept for Pro.
+
+### Added
+- Add-on hooks: `pgcc_sidebar_modes`, `pgcc_sidebar_{mode}`,
+  `pgcc_library_args`, `pgcc_after_content`, `pgcc_admin_tabs`,
+  `pgcc_admin_tab_{slug}`.
+
 ## 0.5.0 — 2026-11-14
 
 ### Changed

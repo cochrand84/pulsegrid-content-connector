@@ -10,7 +10,6 @@ defined( 'WP_UNINSTALL_PLUGIN' ) || exit;
 global $wpdb;
 
 delete_option( 'pgcc_settings' );
-delete_option( 'pgcc_care_links' );
 delete_option( 'pgcc_topics' );
 
 // phpcs:ignore WordPress.DB.DirectDatabaseQuery

@@ -3,7 +3,7 @@
  * Plugin Name:       Pulsegrid Content Connector
  * Plugin URI:        https://github.com/cochrand84/pulsegrid-content-connector
  * Description:       Display Mayo Clinic Health Information Library content on any WordPress site through the Mayo Clinic GBS Realtime (Content Delivery) API. Requires your own licensed API credentials from Mayo Clinic. Includes a demo mode with sample data.
- * Version:           0.5.0
+ * Version:           0.6.0
  * Requires at least: 6.0
  * Requires PHP:      7.4
  * Author:            David Cochran
@@ -21,7 +21,7 @@
 
 defined( 'ABSPATH' ) || exit;
 
-define( 'PGCC_VERSION', '0.5.0' );
+define( 'PGCC_VERSION', '0.6.0' );
 define( 'PGCC_FILE', __FILE__ );
 define( 'PGCC_DIR', plugin_dir_path( __FILE__ ) );
 define( 'PGCC_URL', plugin_dir_url( __FILE__ ) );
@@ -32,6 +32,9 @@ define( 'PGCC_URL', plugin_dir_url( __FILE__ ) );
  */
 define( 'PGCC_MAX_CACHE_TTL', 48 * HOUR_IN_SECONDS );
 
+/** Where to learn about the Pulsegrid Pro add-on. */
+define( 'PGCC_PRO_URL', 'https://pulsegrid.davidcochran.us/pro/' );
+
 require_once PGCC_DIR . 'includes/helpers.php';
 require_once PGCC_DIR . 'includes/interface-pgcc-source.php';
 require_once PGCC_DIR . 'includes/class-pgcc-settings.php';
@@ -39,7 +42,6 @@ require_once PGCC_DIR . 'includes/class-pgcc-cache.php';
 require_once PGCC_DIR . 'includes/class-pgcc-rate-limit.php';
 require_once PGCC_DIR . 'includes/class-pgcc-api-source.php';
 require_once PGCC_DIR . 'includes/class-pgcc-demo-source.php';
-require_once PGCC_DIR . 'includes/class-pgcc-care-links.php';
 require_once PGCC_DIR . 'includes/class-pgcc-topics.php';
 require_once PGCC_DIR . 'includes/class-pgcc-style.php';
 require_once PGCC_DIR . 'includes/class-pgcc-image-proxy.php';

@@ -1,27 +1,6 @@
 /* Settings → Pulsegrid */
 .pgcc-help { list-style: disc; padding-left: 1.5em; max-width: 60em; }
 .pgcc-help li { margin-bottom: .35em; }
-.pgcc-links-toolbar { display: flex; gap: 1em; align-items: center; margin: 1em 0 .5em; }
-.pgcc-links-toolbar input[type="search"] { width: 22em; }
-.pgcc-count { color: #646970; }
-.pgcc-links-table { table-layout: fixed; }
-.pgcc-links-table td { vertical-align: top; }
-.pgcc-links-table .col-order { width: 3.5em; text-align: center; }
-.pgcc-links-table .col-topic { width: 14%; }
-.pgcc-links-table .col-ids { width: 13%; }
-.pgcc-links-table .col-actions { width: 5em; }
-.pgcc-links-table input[type="text"], .pgcc-links-table input[type="url"] { width: 100%; }
-.pgcc-num { display: block; font-weight: 600; }
-.pgcc-move .button-link { font-size: 11px; line-height: 1.4; padding: 0 2px; }
-.pgcc-link { display: grid; grid-template-columns: 1fr 1.4fr auto; gap: 4px; margin-bottom: 4px; }
-.pgcc-remove-link { color: #b32d2e; font-size: 16px; line-height: 28px; padding: 0 4px; }
-.pgcc-add-link { font-size: 12px; }
-.pgcc-row:nth-child(even) td { background: #f6f7f7; }
-.pgcc-io { display: flex; gap: .5em; flex-wrap: wrap; margin-bottom: 1em; }
-.pgcc-import { padding: 1em; background: #fff; border: 1px solid #c3c4c7; max-width: 46em; }
-.pgcc-import fieldset { margin: .5em 0 1em; }
-.pgcc-reset { margin-top: 2em; }
-.pgcc-topics-preview { list-style: none; margin: 0; padding: 0; max-width: 46em; }
 .pgcc-topics-preview li { display: flex; gap: 1em; align-items: baseline; padding: .35em 0; border-bottom: 1px solid #dcdcde; }
 .pgcc-topics-preview a { display: inline-block; min-width: 12em; padding: .2em .8em; border: 1px solid #c3c4c7; border-radius: 999px; background: #fff; text-decoration: none; }
 .pgcc-doc { max-width: 60em; }

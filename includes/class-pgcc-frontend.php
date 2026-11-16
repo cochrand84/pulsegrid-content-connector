@@ -3,7 +3,7 @@
  * Front end: shortcodes, document title, canonical tag, and assets.
  *
  *   [pulsegrid]          Full library (landing, search, article) on any page.
- *     sidebar="none|cta|links"      Override the sidebar setting for this page.
+ *     sidebar="none|cta"            Override the sidebar setting for this page (add-ons may add modes).
  *     featured="12"                 Number of featured articles on the landing view (0 hides).
  *
  *   [pulsegrid_search]   Just the search box; submits to the library page.
@@ -259,27 +259,22 @@ class PGCC_Frontend {
 			}
 		}
 
-		$match = null;
-		if ( 'article' === $request->mode && $request->article ) {
-			$match = PGCC_Care_Links::match( $request->article );
-		}
-
-		// Admins get a panel under each article listing its Mayo categories
-		// and which sidebar row (if any) matched, to make mapping easy.
-		$inspector = 'article' === $request->mode && $request->article
-			&& PGCC_Settings::get( 'show_inspector' )
-			&& current_user_can( 'manage_options' );
-
 		$args = array(
 			'request'  => $request,
 			'live'     => $source->is_live(),
 			'base_url' => $base,
 			'sidebar'  => $sidebar,
 			'featured' => $featured,
-			'match'     => $match,
-			'inspector' => $inspector,
 			'settings' => PGCC_Settings::all(),
 		);
+
+		/**
+		 * Filter the arguments passed to the library templates.
+		 *
+		 * @param array        $args    View arguments.
+		 * @param PGCC_Request $request Current request.
+		 */
+		$args = (array) apply_filters( 'pgcc_library_args', $args, $request );
 
 		ob_start();
 		pgcc_template( 'library', $args );

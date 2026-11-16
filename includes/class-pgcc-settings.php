@@ -45,9 +45,6 @@ class PGCC_Settings {
 			'cta_text'        => __( 'Connect with a specialist who can help with your health concerns.', 'pulsegrid-content-connector' ),
 			'cta_button'      => __( 'Schedule an Appointment', 'pulsegrid-content-connector' ),
 			'cta_url'         => '',
-			'links_provider_heading' => __( 'Find a Provider', 'pulsegrid-content-connector' ),
-			'links_services_heading' => __( 'Services We Offer', 'pulsegrid-content-connector' ),
-			'show_inspector'  => 1,
 		);
 	}
 
@@ -130,14 +127,39 @@ class PGCC_Settings {
 	}
 
 	/**
-	 * Sidebar mode. 'providers' is accepted as an older name for 'links'.
+	 * Available sidebar modes.
+	 *
+	 * @return array mode => label
+	 */
+	public static function sidebar_modes() {
+		$modes = array(
+			'none' => __( 'No sidebar', 'pulsegrid-content-connector' ),
+			'cta'  => __( 'Call to action (below)', 'pulsegrid-content-connector' ),
+		);
+		/**
+		 * Filter the sidebar modes. Add-ons register their own mode here and
+		 * render it on the `pgcc_sidebar_{mode}` action.
+		 *
+		 * @param array $modes mode => label.
+		 */
+		$modes = (array) apply_filters( 'pgcc_sidebar_modes', $modes );
+		$modes['none'] = isset( $modes['none'] ) ? $modes['none'] : __( 'No sidebar', 'pulsegrid-content-connector' );
+		return $modes;
+	}
+
+	/**
+	 * Sidebar mode. A mode whose add-on is not active falls back to the call
+	 * to action, so a sidebar never silently disappears.
 	 *
 	 * @param string $value Raw value.
-	 * @return string 'none' | 'cta' | 'links'
+	 * @return string
 	 */
 	public static function normalize_sidebar( $value ) {
-		$value = 'providers' === $value ? 'links' : (string) $value;
-		return in_array( $value, array( 'none', 'cta', 'links' ), true ) ? $value : 'none';
+		$value = 'providers' === $value ? 'links' : sanitize_key( (string) $value );
+		if ( isset( self::sidebar_modes()[ $value ] ) ) {
+			return $value;
+		}
+		return ( '' === $value || 'none' === $value ) ? 'none' : 'cta';
 	}
 
 	/**
@@ -183,13 +205,11 @@ class PGCC_Settings {
 
 		$out['sidebar'] = self::normalize_sidebar( isset( $input['sidebar'] ) ? $input['sidebar'] : 'none' );
 
-		foreach ( array( 'cta_title', 'cta_button', 'links_provider_heading', 'links_services_heading' ) as $k ) {
+		foreach ( array( 'cta_title', 'cta_button' ) as $k ) {
 			$out[ $k ] = isset( $input[ $k ] ) ? sanitize_text_field( wp_unslash( $input[ $k ] ) ) : $defaults[ $k ];
 		}
 		$out['cta_text'] = isset( $input['cta_text'] ) ? sanitize_textarea_field( wp_unslash( $input['cta_text'] ) ) : $defaults['cta_text'];
 		$out['cta_url']  = isset( $input['cta_url'] ) ? esc_url_raw( trim( $input['cta_url'] ) ) : '';
-
-		$out['show_inspector'] = empty( $input['show_inspector'] ) ? 0 : 1;
 
 		// Changing the content source or credentials invalidates cached data.
 		if ( $out['mode'] !== $current['mode'] || $out['api_key'] !== $current['api_key'] || $out['base_url'] !== $current['base_url'] || $out['language'] !== $current['language'] ) {

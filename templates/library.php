@@ -6,10 +6,8 @@
  *     @type PGCC_Request $request  Current request (mode, article, search, error).
  *     @type bool         $live     True when showing real Mayo Clinic content.
  *     @type string       $base_url URL of the page hosting the library.
- *     @type string       $sidebar   'none' | 'cta' | 'links'.
+ *     @type string       $sidebar   'none' | 'cta', or a mode added by an add-on.
  *     @type array        $featured  Featured search results for the landing view.
- *     @type array|null   $match     Care-links match for the article (PGCC_Care_Links::match()).
- *     @type bool         $inspector Show the admin-only category inspector.
  *     @type array        $settings Plugin settings.
  * }
  *
@@ -65,9 +63,14 @@ $pgcc_has_sidebar = 'none' !== $args['sidebar'];
 		<?php endif; ?>
 	</div>
 
-	<?php if ( ! empty( $args['inspector'] ) ) : ?>
-		<?php pgcc_template( 'category-inspector', $args ); ?>
-	<?php endif; ?>
+	<?php
+	/**
+	 * After the library content, before the attribution.
+	 *
+	 * @param array $args View arguments.
+	 */
+	do_action( 'pgcc_after_content', $args );
+	?>
 
 	<?php pgcc_template( 'attribution', $args ); ?>
 </div>

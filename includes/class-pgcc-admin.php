@@ -17,11 +17,6 @@ class PGCC_Admin {
 		add_action( 'admin_post_pgcc_clear_cache', array( $this, 'handle_clear_cache' ) );
 		add_action( 'admin_post_pgcc_test_connection', array( $this, 'handle_test_connection' ) );
 		add_action( 'admin_post_pgcc_create_page', array( $this, 'handle_create_page' ) );
-		add_action( 'admin_post_pgcc_save_links', array( $this, 'handle_save_links' ) );
-		add_action( 'admin_post_pgcc_import_links', array( $this, 'handle_import_links' ) );
-		add_action( 'admin_post_pgcc_export_links', array( $this, 'handle_export_links' ) );
-		add_action( 'admin_post_pgcc_links_template', array( $this, 'handle_links_template' ) );
-		add_action( 'admin_post_pgcc_reset_links', array( $this, 'handle_reset_links' ) );
 		add_action( 'admin_enqueue_scripts', array( $this, 'assets' ) );
 		add_filter( 'plugin_action_links_' . plugin_basename( PGCC_FILE ), array( $this, 'action_links' ) );
 	}
@@ -160,6 +155,28 @@ class PGCC_Admin {
 		return PGCC_Settings::OPTION . '[' . $name . ']';
 	}
 
+	/**
+	 * Settings tabs.
+	 *
+	 * @return array slug => label
+	 */
+	private function tabs() {
+		$tabs = array(
+			'general' => __( 'General', 'pulsegrid-content-connector' ),
+			'topics'  => __( 'Topic buttons', 'pulsegrid-content-connector' ),
+			'help'    => __( 'Shortcodes &amp; help', 'pulsegrid-content-connector' ),
+		);
+		/**
+		 * Filter the settings tabs. Add-ons render their tab on the
+		 * `pgcc_admin_tab_{slug}` action.
+		 *
+		 * @param array $tabs slug => label.
+		 */
+		$tabs = (array) apply_filters( 'pgcc_admin_tabs', $tabs );
+		$tabs = array_map( 'wp_strip_all_tags', $tabs );
+		return array( 'general' => $tabs['general'] ?? __( 'General', 'pulsegrid-content-connector' ) ) + $tabs;
+	}
+
 	public function render() {
 		if ( ! current_user_can( 'manage_options' ) ) {
 			return;
@@ -171,7 +188,8 @@ class PGCC_Admin {
 		$page_id    = (int) $s['library_page_id'];
 		// phpcs:disable WordPress.Security.NonceVerification.Recommended -- display only.
 		$tab        = isset( $_GET['tab'] ) ? sanitize_key( wp_unslash( $_GET['tab'] ) ) : 'general';
-		$tab        = in_array( $tab, array( 'general', 'links', 'topics', 'help' ), true ) ? $tab : 'general';
+		$tabs       = $this->tabs();
+		$tab        = isset( $tabs[ $tab ] ) ? $tab : 'general';
 		// phpcs:enable
 		$flash      = get_transient( 'pgcc_notice_' . get_current_user_id() );
 		$notice     = is_array( $flash ) ? sanitize_key( (string) $flash['code'] ) : '';
@@ -189,20 +207,24 @@ class PGCC_Admin {
 			<?php endif; ?>
 
 			<nav class="nav-tab-wrapper">
-				<a href="<?php echo esc_url( $tab_url ); ?>" class="nav-tab <?php echo 'general' === $tab ? 'nav-tab-active' : ''; ?>"><?php esc_html_e( 'General', 'pulsegrid-content-connector' ); ?></a>
-				<a href="<?php echo esc_url( $tab_url . '&tab=links' ); ?>" class="nav-tab <?php echo 'links' === $tab ? 'nav-tab-active' : ''; ?>"><?php esc_html_e( 'Sidebar links', 'pulsegrid-content-connector' ); ?></a>
-				<a href="<?php echo esc_url( $tab_url . '&tab=topics' ); ?>" class="nav-tab <?php echo 'topics' === $tab ? 'nav-tab-active' : ''; ?>"><?php esc_html_e( 'Topic buttons', 'pulsegrid-content-connector' ); ?></a>
-				<a href="<?php echo esc_url( $tab_url . '&tab=help' ); ?>" class="nav-tab <?php echo 'help' === $tab ? 'nav-tab-active' : ''; ?>"><?php esc_html_e( 'Shortcodes &amp; help', 'pulsegrid-content-connector' ); ?></a>
+				<?php foreach ( $tabs as $pgcc_slug => $pgcc_label ) : ?>
+					<a href="<?php echo esc_url( 'general' === $pgcc_slug ? $tab_url : $tab_url . '&tab=' . $pgcc_slug ); ?>" class="nav-tab <?php echo $pgcc_slug === $tab ? 'nav-tab-active' : ''; ?>"><?php echo esc_html( $pgcc_label ); ?></a>
+				<?php endforeach; ?>
 			</nav>
 
 			<?php
 			if ( 'general' !== $tab ) {
-				if ( 'links' === $tab ) {
-					$this->render_links_tab();
-				} elseif ( 'topics' === $tab ) {
+				if ( 'topics' === $tab ) {
 					$this->render_topics_tab();
-				} else {
+				} elseif ( 'help' === $tab ) {
 					$this->render_help_tab();
+				} else {
+					/**
+					 * Render an add-on's settings tab (registered with `pgcc_admin_tabs`).
+					 *
+					 * @param string $tab_url Base URL of the settings screen.
+					 */
+					do_action( 'pgcc_admin_tab_' . $tab, $tab_url );
 				}
 				echo '</div>';
 				return;
@@ -358,19 +380,23 @@ class PGCC_Admin {
 						<th scope="row"><?php esc_html_e( 'Show on search and article views', 'pulsegrid-content-connector' ); ?></th>
 						<td>
 							<?php $sidebar = PGCC_Settings::normalize_sidebar( $s['sidebar'] ); ?>
+							<?php $modes = PGCC_Settings::sidebar_modes(); ?>
 							<fieldset>
-								<label><input type="radio" name="<?php echo esc_attr( $this->name( 'sidebar' ) ); ?>" value="none" <?php checked( $sidebar, 'none' ); ?>> <?php esc_html_e( 'No sidebar', 'pulsegrid-content-connector' ); ?></label><br>
-								<label><input type="radio" name="<?php echo esc_attr( $this->name( 'sidebar' ) ); ?>" value="cta" <?php checked( $sidebar, 'cta' ); ?>> <?php esc_html_e( 'Call to action (below) only', 'pulsegrid-content-connector' ); ?></label><br>
-								<label><input type="radio" name="<?php echo esc_attr( $this->name( 'sidebar' ) ); ?>" value="links" <?php checked( $sidebar, 'links' ); ?>> <?php esc_html_e( 'Links matched to the article’s topic, falling back to the call to action', 'pulsegrid-content-connector' ); ?></label>
+								<?php foreach ( $modes as $pgcc_mode => $pgcc_mode_label ) : ?>
+									<label><input type="radio" name="<?php echo esc_attr( $this->name( 'sidebar' ) ); ?>" value="<?php echo esc_attr( $pgcc_mode ); ?>" <?php checked( $sidebar, $pgcc_mode ); ?>> <?php echo esc_html( $pgcc_mode_label ); ?></label><br>
+								<?php endforeach; ?>
 							</fieldset>
-							<p class="description"><a href="<?php echo esc_url( $tab_url . '&tab=links' ); ?>"><?php esc_html_e( 'Edit the topic → link mapping', 'pulsegrid-content-connector' ); ?></a></p>
-						</td>
-					</tr>
-					<tr>
-						<th scope="row"><label for="pgcc-lph"><?php esc_html_e( 'Link headings', 'pulsegrid-content-connector' ); ?></label></th>
-						<td>
-							<p><input type="text" id="pgcc-lph" class="regular-text" name="<?php echo esc_attr( $this->name( 'links_provider_heading' ) ); ?>" value="<?php echo esc_attr( $s['links_provider_heading'] ); ?>"> <span class="description"><?php esc_html_e( 'above the provider link(s)', 'pulsegrid-content-connector' ); ?></span></p>
-							<p><input type="text" class="regular-text" name="<?php echo esc_attr( $this->name( 'links_services_heading' ) ); ?>" value="<?php echo esc_attr( $s['links_services_heading'] ); ?>"> <span class="description"><?php esc_html_e( 'above the service links', 'pulsegrid-content-connector' ); ?></span></p>
+							<?php if ( ! isset( $modes['links'] ) ) : ?>
+								<p class="description">
+									<?php
+									printf(
+										/* translators: %s: link to Pulsegrid Pro */
+										esc_html__( 'Want the sidebar to show your own provider and service pages matched to each article’s topic? %s adds that.', 'pulsegrid-content-connector' ),
+										'<a href="' . esc_url( PGCC_PRO_URL ) . '" target="_blank" rel="noopener">Pulsegrid Pro</a>'
+									);
+									?>
+								</p>
+							<?php endif; ?>
 						</td>
 					</tr>
 					<tr>
@@ -380,13 +406,7 @@ class PGCC_Admin {
 							<p><textarea class="large-text" rows="2" name="<?php echo esc_attr( $this->name( 'cta_text' ) ); ?>" placeholder="<?php esc_attr_e( 'Text', 'pulsegrid-content-connector' ); ?>"><?php echo esc_textarea( $s['cta_text'] ); ?></textarea></p>
 							<p><input type="text" class="regular-text" name="<?php echo esc_attr( $this->name( 'cta_button' ) ); ?>" value="<?php echo esc_attr( $s['cta_button'] ); ?>" placeholder="<?php esc_attr_e( 'Button label', 'pulsegrid-content-connector' ); ?>"></p>
 							<p><input type="url" class="regular-text code" name="<?php echo esc_attr( $this->name( 'cta_url' ) ); ?>" value="<?php echo esc_attr( $s['cta_url'] ); ?>" placeholder="https://"></p>
-							<p class="description"><?php esc_html_e( 'Shown on search results, and on articles with no mapped topic.', 'pulsegrid-content-connector' ); ?></p>
-						</td>
-					</tr>
-					<tr>
-						<th scope="row"><?php esc_html_e( 'Category inspector', 'pulsegrid-content-connector' ); ?></th>
-						<td>
-							<label><input type="checkbox" name="<?php echo esc_attr( $this->name( 'show_inspector' ) ); ?>" value="1" <?php checked( ! empty( $s['show_inspector'] ) ); ?>> <?php esc_html_e( 'Show administrators a panel under each article listing its Mayo categories and which sidebar row matched', 'pulsegrid-content-connector' ); ?></label>
+							<p class="description"><?php esc_html_e( 'Shown beside search results and articles.', 'pulsegrid-content-connector' ); ?></p>
 						</td>
 					</tr>
 				</table>
@@ -524,11 +544,11 @@ class PGCC_Admin {
 			<h2><code>[pulsegrid]</code> &mdash; <?php esc_html_e( 'the library', 'pulsegrid-content-connector' ); ?></h2>
 			<p><?php esc_html_e( 'The full library: a landing view with search and featured articles, search results, and articles. Put it on one page and choose that page as the Library page on the General tab.', 'pulsegrid-content-connector' ); ?></p>
 			<?php $this->code_box( '[pulsegrid]' ); ?>
-			<?php $this->code_box( '[pulsegrid sidebar="links" featured="6"]' ); ?>
+			<?php $this->code_box( '[pulsegrid sidebar="cta" featured="6"]' ); ?>
 			<?php
 			$this->attr_table(
 				array(
-					array( 'sidebar', 'none, cta, links', __( 'Sidebar on search and article views. Defaults to the General tab setting. “links” uses the Sidebar links tab.', 'pulsegrid-content-connector' ) ),
+					array( 'sidebar', implode( ', ', array_keys( PGCC_Settings::sidebar_modes() ) ), __( 'Sidebar on search and article views. Defaults to the General tab setting.', 'pulsegrid-content-connector' ) ),
 					array( 'featured', '0–50', __( 'How many featured articles the landing view shows. 0 hides them.', 'pulsegrid-content-connector' ) ),
 				)
 			);
@@ -594,7 +614,7 @@ class PGCC_Admin {
 	}
 
 	/* ------------------------------------------------------------------
-	 * Sidebar links tab
+	 * Assets
 	 * ------------------------------------------------------------------ */
 
 	/**
@@ -604,216 +624,6 @@ class PGCC_Admin {
 		if ( 'settings_page_' . self::PAGE !== $hook ) {
 			return;
 		}
-		wp_enqueue_script( 'pgcc-admin-links', PGCC_URL . 'assets/js/admin-links.js', array(), PGCC_VERSION, true );
 		wp_enqueue_style( 'pgcc-admin', PGCC_URL . 'assets/css/admin.css', array(), PGCC_VERSION );
-	}
-
-	private function render_links_tab() {
-		$rows     = PGCC_Care_Links::rows();
-		$is_saved = PGCC_Care_Links::has_saved_rows();
-		$sidebar  = PGCC_Settings::normalize_sidebar( PGCC_Settings::get( 'sidebar' ) );
-		$post_url = admin_url( 'admin-post.php' );
-		?>
-		<p class="pgcc-intro">
-			<?php esc_html_e( 'When someone reads an article, the sidebar shows links to your own pages for that topic. Each row lists one or more Mayo category IDs and the links to show for them.', 'pulsegrid-content-connector' ); ?>
-		</p>
-		<ul class="pgcc-help">
-			<li><?php echo wp_kses( __( '<strong>Finding IDs:</strong> open any article on your library page while logged in as an administrator. A yellow panel under the article lists its categories and IDs, and which row matched.', 'pulsegrid-content-connector' ), array( 'strong' => array() ) ); ?></li>
-			<li><?php echo wp_kses( __( '<strong>Which row wins:</strong> categories run from broad (“Diagnosable condition”) to specific (“Gas and gas pains”). The most specific mapped ID wins; ties go to the row higher in this list.', 'pulsegrid-content-connector' ), array( 'strong' => array() ) ); ?></li>
-			<li><?php echo wp_kses( __( '<strong>Default:</strong> put <code>*</code> in the IDs of one row to use it when nothing else matches.', 'pulsegrid-content-connector' ), array( 'strong' => array(), 'code' => array() ) ); ?></li>
-		</ul>
-
-		<?php if ( 'links' !== $sidebar ) : ?>
-			<div class="notice notice-warning inline"><p>
-				<?php esc_html_e( 'The sidebar is not set to show these links. Choose “Links matched to the article’s topic” on the General tab (or use [pulsegrid sidebar="links"]).', 'pulsegrid-content-connector' ); ?>
-			</p></div>
-		<?php endif; ?>
-		<?php if ( ! $is_saved && $rows ) : ?>
-			<div class="notice notice-info inline"><p>
-				<?php esc_html_e( 'These are example rows for demo mode. Edit and save them, or import your own.', 'pulsegrid-content-connector' ); ?>
-			</p></div>
-		<?php endif; ?>
-
-		<form method="post" action="<?php echo esc_url( $post_url ); ?>" id="pgcc-links-form">
-			<input type="hidden" name="action" value="pgcc_save_links">
-			<input type="hidden" name="rows_json" id="pgcc-rows-json" value="">
-			<?php wp_nonce_field( 'pgcc_save_links' ); ?>
-
-			<div class="pgcc-links-toolbar">
-				<input type="search" id="pgcc-links-filter" placeholder="<?php esc_attr_e( 'Filter by topic, ID or link…', 'pulsegrid-content-connector' ); ?>">
-				<span class="pgcc-count" id="pgcc-links-count"></span>
-			</div>
-
-			<table class="widefat pgcc-links-table">
-				<thead>
-					<tr>
-						<th class="col-order">#</th>
-						<th class="col-topic"><?php esc_html_e( 'Topic', 'pulsegrid-content-connector' ); ?></th>
-						<th class="col-ids"><?php esc_html_e( 'Mayo category IDs', 'pulsegrid-content-connector' ); ?></th>
-						<th class="col-links"><?php echo esc_html( PGCC_Settings::get( 'links_provider_heading' ) ); ?></th>
-						<th class="col-links"><?php echo esc_html( PGCC_Settings::get( 'links_services_heading' ) ); ?></th>
-						<th class="col-actions"><span class="screen-reader-text"><?php esc_html_e( 'Actions', 'pulsegrid-content-connector' ); ?></span></th>
-					</tr>
-				</thead>
-				<tbody id="pgcc-links-body"></tbody>
-			</table>
-			<script type="application/json" id="pgcc-links-data"><?php echo wp_json_encode( $rows, JSON_HEX_TAG | JSON_HEX_AMP | JSON_UNESCAPED_SLASHES ); ?></script>
-
-			<p>
-				<button type="button" class="button" id="pgcc-add-row">+ <?php esc_html_e( 'Add row', 'pulsegrid-content-connector' ); ?></button>
-			</p>
-			<?php submit_button( __( 'Save links', 'pulsegrid-content-connector' ) ); ?>
-		</form>
-
-		<hr>
-		<h2><?php esc_html_e( 'Import and export', 'pulsegrid-content-connector' ); ?></h2>
-		<p><?php echo wp_kses( __( 'Use a spreadsheet: download the template, fill it in, and save it from Excel as <strong>CSV UTF-8</strong>. Put several IDs in one cell separated by semicolons. Add more link columns by continuing the pattern (<code>service4_label</code>, <code>service4_url</code>, <code>provider2_label</code>…).', 'pulsegrid-content-connector' ), array( 'strong' => array(), 'code' => array() ) ); ?></p>
-
-		<div class="pgcc-io">
-			<form method="post" action="<?php echo esc_url( $post_url ); ?>">
-				<input type="hidden" name="action" value="pgcc_links_template">
-				<?php wp_nonce_field( 'pgcc_links_template' ); ?>
-				<?php submit_button( __( 'Download template', 'pulsegrid-content-connector' ), 'secondary', 'submit', false ); ?>
-			</form>
-			<form method="post" action="<?php echo esc_url( $post_url ); ?>">
-				<input type="hidden" name="action" value="pgcc_export_links">
-				<?php wp_nonce_field( 'pgcc_export_links' ); ?>
-				<?php submit_button( __( 'Export current links (CSV)', 'pulsegrid-content-connector' ), 'secondary', 'submit', false, $rows ? array() : array( 'disabled' => 'disabled' ) ); ?>
-			</form>
-		</div>
-
-		<form method="post" action="<?php echo esc_url( $post_url ); ?>" enctype="multipart/form-data" class="pgcc-import">
-			<input type="hidden" name="action" value="pgcc_import_links">
-			<?php wp_nonce_field( 'pgcc_import_links' ); ?>
-			<p><input type="file" name="pgcc_csv" accept=".csv,text/csv" required></p>
-			<fieldset>
-				<label><input type="radio" name="mode" value="merge" checked> <?php esc_html_e( 'Add and update: rows with the same IDs are replaced, new rows are added', 'pulsegrid-content-connector' ); ?></label><br>
-				<label><input type="radio" name="mode" value="replace"> <?php esc_html_e( 'Replace everything with the file', 'pulsegrid-content-connector' ); ?></label>
-			</fieldset>
-			<?php submit_button( __( 'Import CSV', 'pulsegrid-content-connector' ), 'secondary', 'submit', false ); ?>
-		</form>
-
-		<?php if ( $is_saved ) : ?>
-			<form method="post" action="<?php echo esc_url( $post_url ); ?>" class="pgcc-reset">
-				<input type="hidden" name="action" value="pgcc_reset_links">
-				<?php wp_nonce_field( 'pgcc_reset_links' ); ?>
-				<label><input type="checkbox" name="confirm" value="1" required> <?php esc_html_e( 'Delete all sidebar links', 'pulsegrid-content-connector' ); ?></label>
-				<?php submit_button( __( 'Delete', 'pulsegrid-content-connector' ), 'delete', 'submit', false ); ?>
-			</form>
-		<?php endif; ?>
-		<?php
-	}
-
-	/** Permission + nonce check for link handlers. */
-	private function guard( $action ) {
-		if ( ! current_user_can( 'manage_options' ) ) {
-			wp_die( esc_html__( 'Sorry, you are not allowed to do that.', 'pulsegrid-content-connector' ) );
-		}
-		check_admin_referer( $action );
-	}
-
-	public function handle_save_links() {
-		$this->guard( 'pgcc_save_links' );
-		// phpcs:ignore WordPress.Security.NonceVerification.Missing, WordPress.Security.ValidatedSanitizedInput.InputNotSanitized -- nonce checked in guard(); JSON is decoded then sanitized row by row in PGCC_Care_Links::clean_row().
-		$json = isset( $_POST['rows_json'] ) ? wp_unslash( $_POST['rows_json'] ) : '';
-		$rows = json_decode( (string) $json, true );
-		if ( ! is_array( $rows ) ) {
-			$this->back( 'error', __( 'Nothing was saved: the form data was not received. Is JavaScript enabled?', 'pulsegrid-content-connector' ), 'links' );
-		}
-		$before = count( $rows );
-		PGCC_Care_Links::save( $rows );
-		$after = count( PGCC_Care_Links::rows() );
-		$msg   = sprintf(
-			/* translators: %d: number of rows */
-			_n( 'Saved %d row.', 'Saved %d rows.', $after, 'pulsegrid-content-connector' ),
-			$after
-		);
-		if ( $after < $before ) {
-			$msg .= ' ' . sprintf(
-				/* translators: %d: number of rows */
-				_n( '%d incomplete row (no IDs or no link URL) was dropped.', '%d incomplete rows (no IDs or no link URL) were dropped.', $before - $after, 'pulsegrid-content-connector' ),
-				$before - $after
-			);
-		}
-		$this->back( $after < $before ? 'warning' : 'ok', $msg, 'links' );
-	}
-
-	public function handle_import_links() {
-		$this->guard( 'pgcc_import_links' );
-		// phpcs:ignore WordPress.Security.NonceVerification.Missing, WordPress.Security.ValidatedSanitizedInput -- nonce checked in guard(); the upload is size-checked and parsed/sanitized by PGCC_Care_Links::from_csv().
-		$file = isset( $_FILES['pgcc_csv'] ) ? $_FILES['pgcc_csv'] : null;
-		if ( ! $file || UPLOAD_ERR_OK !== (int) $file['error'] || ! is_uploaded_file( $file['tmp_name'] ) ) {
-			$this->back( 'error', __( 'Choose a CSV file to import.', 'pulsegrid-content-connector' ), 'links' );
-		}
-		if ( $file['size'] > 2 * MB_IN_BYTES ) {
-			$this->back( 'error', __( 'That file is larger than 2 MB.', 'pulsegrid-content-connector' ), 'links' );
-		}
-		// phpcs:ignore WordPress.WP.AlternativeFunctions.file_get_contents_file_get_contents
-		$parsed = PGCC_Care_Links::from_csv( (string) file_get_contents( $file['tmp_name'] ) );
-		if ( empty( $parsed['rows'] ) ) {
-			$this->back( 'error', implode( "\n", array_merge( array( __( 'No rows were imported.', 'pulsegrid-content-connector' ) ), array_slice( $parsed['errors'], 0, 20 ) ) ), 'links' );
-		}
-		// phpcs:ignore WordPress.Security.NonceVerification.Missing -- verified in guard().
-		$mode = isset( $_POST['mode'] ) && 'replace' === $_POST['mode'] ? 'replace' : 'merge';
-		$rows = 'replace' === $mode || ! PGCC_Care_Links::has_saved_rows()
-			? $parsed['rows']
-			: PGCC_Care_Links::merge( PGCC_Care_Links::rows(), $parsed['rows'] );
-		PGCC_Care_Links::save( $rows );
-
-		$msg = sprintf(
-			/* translators: 1: rows imported, 2: total rows */
-			__( 'Imported %1$d rows. The table now has %2$d rows.', 'pulsegrid-content-connector' ),
-			count( $parsed['rows'] ),
-			count( PGCC_Care_Links::rows() )
-		);
-		if ( $parsed['errors'] ) {
-			$msg .= "\n" . implode( "\n", array_slice( $parsed['errors'], 0, 20 ) );
-		}
-		$this->back( $parsed['errors'] ? 'warning' : 'ok', $msg, 'links' );
-	}
-
-	/**
-	 * @param string $filename Download name.
-	 * @param string $csv      CSV text.
-	 */
-	private function send_csv( $filename, $csv ) {
-		nocache_headers();
-		header( 'Content-Type: text/csv; charset=utf-8' );
-		header( 'Content-Disposition: attachment; filename="' . sanitize_file_name( $filename ) . '"' );
-		echo $csv; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- CSV download.
-		exit;
-	}
-
-	public function handle_export_links() {
-		$this->guard( 'pgcc_export_links' );
-		$this->send_csv( 'pulsegrid-sidebar-links-' . gmdate( 'Y-m-d' ) . '.csv', PGCC_Care_Links::to_csv( PGCC_Care_Links::rows() ) );
-	}
-
-	public function handle_links_template() {
-		$this->guard( 'pgcc_links_template' );
-		$example = array(
-			array(
-				'ids'      => array( '1452', '2926', '138500' ),
-				'topic'    => 'Gastroenterology',
-				'provider' => array( array( 'label' => 'Gastroenterology', 'url' => 'https://example.org/providers/gastroenterology/' ) ),
-				'services' => array(
-					array( 'label' => 'Lab Services', 'url' => 'https://example.org/lab-services/' ),
-					array( 'label' => 'Diagnostic Imaging', 'url' => 'https://example.org/diagnostic-imaging/' ),
-				),
-			),
-			array(
-				'ids'      => array( '*' ),
-				'topic'    => 'Default (no match)',
-				'provider' => array( array( 'label' => 'Find a Doctor', 'url' => 'https://example.org/find-a-doctor/' ) ),
-				'services' => array(),
-			),
-		);
-		$this->send_csv( 'pulsegrid-sidebar-links-template.csv', PGCC_Care_Links::to_csv( $example ) );
-	}
-
-	public function handle_reset_links() {
-		$this->guard( 'pgcc_reset_links' );
-		PGCC_Care_Links::reset();
-		$this->back( 'ok', __( 'Sidebar links deleted.', 'pulsegrid-content-connector' ), 'links' );
 	}
 }

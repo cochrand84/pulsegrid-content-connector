@@ -23,7 +23,8 @@ without leaving your site.
 - Server-side requests only; the API key never reaches the browser and can live in `wp-config.php`
 - Article images proxied and cached server-side (the image endpoint needs authentication)
 - License-friendly by default: cache capped at **48 hours**, canonical tag to Mayo's `originalUrl` (also passed to Yoast / Rank Math), "Last reviewed" date, © MFMER notice and Terms of Use link
-- Optional sidebar: a call to action, or **links to your own provider and service pages matched to the article's topic**, edited in a table or imported from a spreadsheet
+- Optional sidebar with your own call to action (e.g. "Find a Doctor")
+- **[Pulsegrid Pro](https://pulsegrid.davidcochran.us/pro/)** (separate add-on): sidebar links to your own provider and service pages matched to each article's topic, with a table editor, CSV import/export and a category inspector
 - Matches your theme: fonts, text and links come from the theme, and the accent color can be linked to one of the theme's palette colors; every view can be overridden from your theme
 - Demo mode, WP-CLI commands, clean uninstall
 
@@ -32,7 +33,7 @@ without leaving your site.
 | | |
 |---|---|
 | ![Home page with search box and topic buttons](docs/screenshots/01-home-search-and-topics.png)<br>`[pulsegrid_search]` and `[pulsegrid_topics]` on a home page | ![Search results](docs/screenshots/02-search-results.png)<br>Search results with the call-to-action sidebar |
-| ![Settings: General](docs/screenshots/05-settings-general.png)<br>Settings: content source, display and theme colors | ![Settings: Sidebar links](docs/screenshots/06-settings-sidebar-links.png)<br>Sidebar links: map topics to your own pages, or import a CSV |
+| ![Settings: General](docs/screenshots/05-settings-general.png)<br>Settings: content source, display and theme colors | ![Settings: Sidebar links](docs/screenshots/06-settings-sidebar-links.png)<br>Pulsegrid Pro: map topics to your own pages, or import a CSV |
 | ![Settings: Topic buttons](docs/screenshots/07-settings-topic-buttons.png)<br>Topic buttons | ![Settings: Shortcodes & help](docs/screenshots/08-settings-shortcodes-help.png)<br>Built-in shortcode reference |
 
 Screenshots use the plugin's demo mode, whose sample articles are original
@@ -65,7 +66,7 @@ define( 'PGCC_TRCKR',   'your-trckr-value' );
 ## Shortcode options
 
 ```
-[pulsegrid sidebar="none|cta|links" featured="12"]
+[pulsegrid sidebar="none|cta" featured="12"]
 [pulsegrid_search placeholder="Search health topics…"]
 [pulsegrid_topics heading="Popular topics" limit="6"]
 [pulsegrid_topics topics="Heart attack|heart attack; Colonoscopy|CON-20373087"]
@@ -73,15 +74,17 @@ define( 'PGCC_TRCKR',   'your-trckr-value' );
 
 Edit the saved topic list under **Settings → Pulsegrid → Topic buttons**, one per line as `Label | search terms` or `Label | CONTENT-ID`. The **Shortcodes & help** tab in the same screen documents every option.
 
-## Sidebar links
+## Sidebar links (Pulsegrid Pro)
 
-On article pages the sidebar can link readers to your own pages for that
-topic: a **Find a Provider** link and a list of **Services We Offer**.
+The free plugin's sidebar shows one call to action. With the
+[Pulsegrid Pro](https://pulsegrid.davidcochran.us/pro/) add-on, the sidebar on
+article pages links readers to your own pages for that topic: a **Find a
+Provider** link and a list of **Services We Offer**.
 
 Mayo tags every article with category codes (`mcvId`s) that run from broad to
 specific, e.g. *Condition › Diagnosable condition `1092` › Pain NOS `1770` ›
-Gas and gas pains `2926`*. You map codes to links under **Settings → Health
-Library → Sidebar links**:
+Gas and gas pains `2926`*. With Pro you map codes to links under **Settings →
+Pulsegrid → Sidebar links**:
 
 - Edit rows in the table (topic, one or more codes, provider and service links), reorder them, filter them
 - **Import / export CSV** — download the template, fill it in a spreadsheet, save as *CSV UTF-8*, import (merge or replace)
@@ -138,9 +141,11 @@ properties (`--pgcc-accent`, `--pgcc-border`, `--pgcc-gap`, …) scoped to
 `pulsegrid.css` (the look) only when Plugin styling is on.
 
 Filters: `pgcc_source`, `pgcc_template`, `pgcc_allowed_html`,
-`pgcc_care_links`, `pgcc_care_links_match`, `pgcc_is_library_page`,
-`pgcc_rate_limits`, `pgcc_client_ip`.
-Actions: `pgcc_cache_cleared`, `pgcc_rate_limited`.
+`pgcc_is_library_page`, `pgcc_rate_limits`, `pgcc_client_ip`,
+`pgcc_sidebar_modes`, `pgcc_library_args`, `pgcc_admin_tabs`
+(Pro adds `pgcc_care_links`, `pgcc_care_links_match`).
+Actions: `pgcc_cache_cleared`, `pgcc_rate_limited`, `pgcc_sidebar_{mode}`,
+`pgcc_after_content`, `pgcc_admin_tab_{slug}`.
 
 ## WP-CLI
 
