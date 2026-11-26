@@ -3,7 +3,17 @@
 All notable changes to Pulsegrid Content Connector. Versions follow
 [Semantic Versioning](https://semver.org/); dates are the commit dates.
 
-## Unreleased
+## 0.7.0 — 2026-11-26
+
+### Added
+- `pgcc_request_resolved` action: fires once a search, article or landing
+  view has been answered, with the `PGCC_Request`.
+- `pgcc_api_request` action: fires for every content request in live mode
+  with the result (`live`, `cache`, `error`, `rate_limited`) and kind
+  (`search`, `content`, `image`).
+
+### Changed
+- Tested with WordPress 7.1.5.
 
 ### Security
 - Image proxy: a site-wide limit of 600 uncached images per minute (filter key

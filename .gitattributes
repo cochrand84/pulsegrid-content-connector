@@ -8,6 +8,7 @@
 /prototype          export-ignore
 /README.md          export-ignore
 /CHANGELOG.md       export-ignore
+/.wordpress-org     export-ignore
 
 # Normalise line endings so zips built anywhere match.
 * text=auto eol=lf

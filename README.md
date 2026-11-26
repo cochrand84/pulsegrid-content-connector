@@ -32,9 +32,10 @@ without leaving your site.
 
 | | |
 |---|---|
-| ![Home page with search box and topic buttons](docs/screenshots/01-home-search-and-topics.png)<br>`[pulsegrid_search]` and `[pulsegrid_topics]` on a home page | ![Search results](docs/screenshots/02-search-results.png)<br>Search results with the call-to-action sidebar |
+| ![Library landing page](docs/screenshots/01-home-search-and-topics.png)<br>The library page: search and featured articles | ![Search results](docs/screenshots/02-search-results.png)<br>Search results with the call-to-action sidebar |
 | ![Settings: General](docs/screenshots/05-settings-general.png)<br>Settings: content source, display and theme colors | ![Settings: Sidebar links](docs/screenshots/06-settings-sidebar-links.png)<br>Pulsegrid Pro: map topics to your own pages, or import a CSV |
 | ![Settings: Topic buttons](docs/screenshots/07-settings-topic-buttons.png)<br>Topic buttons | ![Settings: Shortcodes & help](docs/screenshots/08-settings-shortcodes-help.png)<br>Built-in shortcode reference |
+| ![Pulsegrid Pro: Insights](docs/screenshots/09-pro-insights.png)<br>Pulsegrid Pro: Insights (searches, articles, sidebar clicks, API usage) | |
 
 Screenshots use the plugin's demo mode, whose sample articles are original
 placeholder text, not Mayo Clinic content.
@@ -130,7 +131,7 @@ The same article in two different themes, with no plugin settings changed:
 
 | Twenty Twenty-Five | A hospital theme |
 |---|---|
-| ![Article in Twenty Twenty-Five](docs/screenshots/03-article-with-sidebar.png) | ![Same article in another theme](docs/screenshots/04-same-article-other-theme.png) |
+| ![Article in Twenty Twenty-Five](docs/screenshots/03-article-with-sidebar.png) | ![The same article on a phone](docs/screenshots/04-article-on-a-phone.png) |
 
 ## Customizing
 
@@ -144,7 +145,8 @@ Filters: `pgcc_source`, `pgcc_template`, `pgcc_allowed_html`,
 `pgcc_is_library_page`, `pgcc_rate_limits`, `pgcc_client_ip`,
 `pgcc_sidebar_modes`, `pgcc_library_args`, `pgcc_admin_tabs`
 (Pro adds `pgcc_care_links`, `pgcc_care_links_match`).
-Actions: `pgcc_cache_cleared`, `pgcc_rate_limited`, `pgcc_sidebar_{mode}`,
+Actions: `pgcc_cache_cleared`, `pgcc_rate_limited`, `pgcc_request_resolved`,
+`pgcc_api_request`, `pgcc_sidebar_{mode}`,
 `pgcc_after_content`, `pgcc_admin_tab_{slug}`.
 
 ## WP-CLI

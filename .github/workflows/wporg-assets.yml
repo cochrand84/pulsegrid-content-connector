@@ -1,0 +1,33 @@
+name: WordPress.org readme and assets
+
+# Run by hand (Actions → "WordPress.org readme and assets" → Run workflow) to
+# update the plugin page — readme.txt and the images in .wordpress-org/ —
+# without releasing a new version, e.g. to raise "Tested up to" after a new
+# WordPress release. Only use it when the readme's Stable tag is a version
+# that is already published.
+
+on:
+  workflow_dispatch:
+
+jobs:
+  assets:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4.4.0
+      - name: Install Subversion
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq subversion
+      - name: Check the Stable tag is already published
+        run: |
+          STABLE=$(grep -m1 '^Stable tag:' readme.txt | awk '{print $NF}')
+          if ! svn ls "https://plugins.svn.wordpress.org/pulsegrid-content-connector/tags/${STABLE}/" >/dev/null 2>&1; then
+            echo "::error::Stable tag ${STABLE} is not published yet. Release it with a v${STABLE} tag instead."
+            exit 1
+          fi
+      - name: Update readme and assets on WordPress.org
+        uses: 10up/action-wordpress-plugin-asset-update@2480306f6f693672726d08b5917ea114cb2825f7 # 2.2.0
+        env:
+          SVN_USERNAME: ${{ secrets.SVN_USERNAME }}
+          SVN_PASSWORD: ${{ secrets.SVN_PASSWORD }}
+          SLUG: pulsegrid-content-connector

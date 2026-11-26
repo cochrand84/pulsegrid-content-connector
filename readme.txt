@@ -4,7 +4,7 @@ Tags: health, medical, patient education, mayo clinic, api
 Requires at least: 6.0
 Tested up to: 7.1
 Requires PHP: 7.4
-Stable tag: 0.6.1
+Stable tag: 0.7.0
 License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -75,7 +75,22 @@ Yes. The optional Pulsegrid Pro add-on changes the sidebar to show links to your
 
 Yes. On article views the canonical URL and title are passed to those plugins.
 
+== Screenshots ==
+
+1. The library page in Twenty Twenty-Five: search and featured articles, in the theme's own fonts and colors.
+2. Search results, with the call-to-action sidebar.
+3. An article with the call-to-action sidebar. Demo mode uses bundled sample articles; live mode shows your licensed content.
+4. The same article on a phone.
+5. Settings: content source (demo or live), display, accent color from the theme, and the sidebar call to action.
+6. Topic buttons for `[pulsegrid_topics]`, with a live preview.
+7. The built-in shortcode reference.
+
 == Changelog ==
+
+= 0.7.0 =
+* Tested with WordPress 7.1.5.
+* New hooks for add-ons: `pgcc_request_resolved` (after a search or article is served) and `pgcc_api_request` (how each content request was answered: API call, cache, error or rate limit).
+* Security: a site-wide limit of 600 uncached images per minute, images over 10 MB from the API are rejected, and `[pulsegrid featured="…"]` is capped at 50.
 
 = 0.6.1 =
 * Demo mode: rewrote all sample articles and replaced their category codes with invented ones, so the demo contains no Mayo Clinic text or vocabulary.

@@ -58,7 +58,7 @@ class PGCC_API_Source implements PGCC_Source {
 			),
 			$this->base_url . 'content'
 		);
-		return $this->get_json( $url );
+		return $this->get_json( $url, 'search' );
 	}
 
 	public function get_content( $content_id ) {
@@ -66,7 +66,7 @@ class PGCC_API_Source implements PGCC_Source {
 		if ( '' === $content_id ) {
 			return new WP_Error( 'pgcc_invalid_id', __( 'Invalid content ID.', 'pulsegrid-content-connector' ) );
 		}
-		return $this->get_json( $this->base_url . 'content/' . rawurlencode( $content_id ) . '/' . $this->lang );
+		return $this->get_json( $this->base_url . 'content/' . rawurlencode( $content_id ) . '/' . $this->lang, 'content' );
 	}
 
 	public function get_image( $guid ) {
@@ -77,10 +77,12 @@ class PGCC_API_Source implements PGCC_Source {
 
 		$cached = PGCC_Cache::get_image( 'live', $guid );
 		if ( null !== $cached ) {
+			self::report( 'cache', 'image' );
 			return $cached;
 		}
 
 		if ( ! PGCC_Rate_Limit::allow( 'image' ) ) {
+			self::report( 'rate_limited', 'image' );
 			return new WP_Error( 'pgcc_rate_limited', __( 'Too many requests. Please try again in a minute.', 'pulsegrid-content-connector' ), array( 'status' => 429 ) );
 		}
 
@@ -95,6 +97,7 @@ class PGCC_API_Source implements PGCC_Source {
 		);
 
 		if ( is_wp_error( $response ) ) {
+			self::report( 'error', 'image' );
 			return $response;
 		}
 
@@ -103,6 +106,7 @@ class PGCC_API_Source implements PGCC_Source {
 		$body = (string) wp_remote_retrieve_body( $response );
 
 		if ( $code >= 400 || '' === $body || strlen( $body ) > self::MAX_IMAGE_BYTES || 0 !== strpos( strtolower( $type ), 'image/' ) ) {
+			self::report( 'error', 'image' );
 			return new WP_Error( 'pgcc_image_unavailable', sprintf( 'Mayo API returned HTTP %d for image.', $code ) );
 		}
 
@@ -111,6 +115,7 @@ class PGCC_API_Source implements PGCC_Source {
 			'body' => $body,
 		);
 		PGCC_Cache::set_image( 'live', $guid, $image );
+		self::report( 'live', 'image' );
 		return $image;
 	}
 
@@ -152,14 +157,16 @@ class PGCC_API_Source implements PGCC_Source {
 	 * @param string $url Full URL.
 	 * @return array|WP_Error
 	 */
-	private function get_json( $url ) {
+	private function get_json( $url, $kind = 'content' ) {
 		$key    = PGCC_Cache::key( 'live', $url );
 		$cached = PGCC_Cache::get( $key );
 		if ( null !== $cached ) {
+			self::report( 'cache', $kind );
 			return $cached;
 		}
 
 		if ( ! PGCC_Rate_Limit::allow() ) {
+			self::report( 'rate_limited', $kind );
 			return new WP_Error( 'pgcc_rate_limited', __( 'Too many requests. Please try again in a minute.', 'pulsegrid-content-connector' ), array( 'status' => 429 ) );
 		}
 
@@ -172,24 +179,45 @@ class PGCC_API_Source implements PGCC_Source {
 		);
 
 		if ( is_wp_error( $response ) ) {
+			self::report( 'error', $kind );
 			return $response;
 		}
 
 		$code = (int) wp_remote_retrieve_response_code( $response );
 		if ( 404 === $code ) {
+			self::report( 'live', $kind );
 			return new WP_Error( 'pgcc_not_found', __( 'Content not found.', 'pulsegrid-content-connector' ), array( 'status' => 404 ) );
 		}
 		if ( $code >= 400 ) {
+			self::report( 'error', $kind );
 			return new WP_Error( 'pgcc_http_' . $code, sprintf( 'Mayo API returned HTTP %d.', $code ), array( 'status' => $code ) );
 		}
 
 		$data = json_decode( wp_remote_retrieve_body( $response ), true );
 		if ( ! is_array( $data ) ) {
+			self::report( 'error', $kind );
 			return new WP_Error( 'pgcc_bad_json', __( 'Unexpected response from the content service.', 'pulsegrid-content-connector' ) );
 		}
 
 		PGCC_Cache::set( $key, $data );
+		self::report( 'live', $kind );
 		return $data;
+	}
+
+	/**
+	 * Tell add-ons how a content request was answered.
+	 *
+	 * @param string $result 'live' (called the API), 'cache', 'error' or 'rate_limited'.
+	 * @param string $kind   'search', 'content' or 'image'.
+	 */
+	private static function report( $result, $kind ) {
+		/**
+		 * Fires for every content request in live mode.
+		 *
+		 * @param string $result 'live' (an API call was made), 'cache', 'error' or 'rate_limited'.
+		 * @param string $kind   'search', 'content' or 'image'.
+		 */
+		do_action( 'pgcc_api_request', $result, $kind );
 	}
 
 	/**

@@ -103,6 +103,15 @@ class PGCC_Request {
 			}
 		}
 
+		/**
+		 * Fires once a library request has been answered: a search, an
+		 * article view, or the landing page (also after an error, when the
+		 * mode falls back to 'home' and $request->error is set).
+		 *
+		 * @param PGCC_Request $request The resolved request.
+		 */
+		do_action( 'pgcc_request_resolved', $this );
+
 		return $this;
 	}
 
