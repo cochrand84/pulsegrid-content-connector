@@ -9,7 +9,9 @@
  * - per visitor (by IP): default 20 uncached pages / minute, and
  *                         100 uncached images / minute (an article can
  *                         have many images; they get their own bucket)
- * - whole site:          default 120 uncached pages / minute
+ * - whole site:          default 120 uncached pages / minute, and
+ *                         600 uncached images / minute (so rotating IPs
+ *                         can't burn the quota with random image GUIDs)
  *
  * Behind a reverse proxy every visitor may share one IP; the per-visitor
  * limit then acts as a second site-wide cap. Use the `pgcc_client_ip`
@@ -40,7 +42,7 @@ class PGCC_Rate_Limit {
 		/**
 		 * Filter the rate limits. Set a value to 0 to disable that limit.
 		 *
-		 * @param array $limits { per_ip: int, site: int, per_ip_images: int } calls per minute.
+		 * @param array $limits { per_ip: int, site: int, per_ip_images: int, site_images: int } calls per minute.
 		 */
 		$limits = apply_filters(
 			'pgcc_rate_limits',
@@ -48,6 +50,7 @@ class PGCC_Rate_Limit {
 				'per_ip'        => 20,
 				'site'          => 120,
 				'per_ip_images' => 100,
+				'site_images'   => 600,
 			)
 		);
 
@@ -56,7 +59,10 @@ class PGCC_Rate_Limit {
 		$ip = (string) apply_filters( 'pgcc_client_ip', isset( $_SERVER['REMOTE_ADDR'] ) ? $_SERVER['REMOTE_ADDR'] : '' );
 
 		$checks = 'image' === $kind
-			? array( 'per_ip_images' => self::PREFIX . 'm_' . $window . '_' . md5( $ip ) )
+			? array(
+				'site_images'   => self::PREFIX . 'ms_' . $window,
+				'per_ip_images' => self::PREFIX . 'm_' . $window . '_' . md5( $ip ),
+			)
 			: array(
 				'site'   => self::PREFIX . 's_' . $window,
 				'per_ip' => self::PREFIX . 'i_' . $window . '_' . md5( $ip ),
@@ -72,7 +78,7 @@ class PGCC_Rate_Limit {
 				/**
 				 * Fires when a visitor hits the API rate limit.
 				 *
-				 * @param string $name Which limit ('site' or 'per_ip').
+				 * @param string $name Which limit ('site', 'per_ip', 'site_images' or 'per_ip_images').
 				 */
 				do_action( 'pgcc_rate_limited', $name );
 				return false;

@@ -101,8 +101,8 @@ Rows can also be supplied from code with the `pgcc_care_links` filter.
 
 Every uncached search, results page or article costs a live API call. The
 plugin limits uncached calls to 20 pages per visitor and 120 site-wide per
-minute, with a separate 100-per-visitor budget for images (administrators and
-WP-CLI are exempt). Adjust with the `pgcc_rate_limits`
+minute, with a separate image budget of 100 per visitor and 600 site-wide
+(administrators and WP-CLI are exempt). Adjust with the `pgcc_rate_limits`
 filter; behind a CDN or proxy, use `pgcc_client_ip` to read the real visitor
 IP from a header you trust (e.g. `CF-Connecting-IP`).
 

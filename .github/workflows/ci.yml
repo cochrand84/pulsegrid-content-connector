@@ -9,6 +9,9 @@ on:
 permissions:
   contents: read
 
+# Third-party actions are pinned to full commit SHAs (tag in the comment) so a
+# moved or compromised tag can't run new code with the release/SVN secrets.
+
 jobs:
   lint:
     runs-on: ubuntu-latest
@@ -16,8 +19,8 @@ jobs:
       matrix:
         php: ["7.4", "8.1", "8.3", "8.4"]
     steps:
-      - uses: actions/checkout@v4
-      - uses: shivammathur/setup-php@v2
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4.4.0
+      - uses: shivammathur/setup-php@eb7c497e18156a6bbabfef1d3a82760b9eda3962 # 2.40.0
         with:
           php-version: ${{ matrix.php }}
           tools: none
@@ -33,13 +36,13 @@ jobs:
     permissions:
       contents: write
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4.4.0
       - name: Build plugin zip
         run: |
           mkdir -p build/pulsegrid-content-connector
           git archive HEAD | tar -x -C build/pulsegrid-content-connector
           cd build && zip -r ../pulsegrid-content-connector.zip pulsegrid-content-connector
-      - uses: softprops/action-gh-release@v2
+      - uses: softprops/action-gh-release@3bb12739c298aeb8a4eeaf626c5b8d85266b0e65 # v2.6.2
         with:
           files: pulsegrid-content-connector.zip
           generate_release_notes: true
@@ -50,7 +53,7 @@ jobs:
     needs: lint
     runs-on: ubuntu-24.04
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4.4.0
       - name: Install Subversion
         run: |
           sudo apt-get update -qq
@@ -68,7 +71,7 @@ jobs:
           fi
           echo "VERSION=$TAG" >> "$GITHUB_ENV"
       - name: Deploy to WordPress.org SVN
-        uses: 10up/action-wordpress-plugin-deploy@stable
+        uses: 10up/action-wordpress-plugin-deploy@54bd289b8525fd23a5c365ec369185f2966529c2 # 2.3.0
         env:
           SVN_USERNAME: ${{ secrets.SVN_USERNAME }}
           SVN_PASSWORD: ${{ secrets.SVN_PASSWORD }}

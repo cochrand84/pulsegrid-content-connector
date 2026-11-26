@@ -4,7 +4,7 @@
  *
  *   [pulsegrid]          Full library (landing, search, article) on any page.
  *     sidebar="none|cta"            Override the sidebar setting for this page (add-ons may add modes).
- *     featured="12"                 Number of featured articles on the landing view (0 hides).
+ *     featured="12"                 Number of featured articles on the landing view (0 hides, max 50).
  *
  *   [pulsegrid_search]   Just the search box; submits to the library page.
  *     placeholder="Search health topics…"
@@ -251,8 +251,10 @@ class PGCC_Frontend {
 		}
 
 		$featured = array();
-		if ( 'home' === $request->mode && (int) $atts['featured'] > 0 ) {
-			$sample = $source->search( '*', (int) $atts['featured'] );
+		// Same 0–50 range as the setting: any author can type this attribute.
+		$featured_count = min( 50, absint( $atts['featured'] ) );
+		if ( 'home' === $request->mode && $featured_count > 0 ) {
+			$sample = $source->search( '*', $featured_count );
 			if ( ! is_wp_error( $sample ) ) {
 				$featured = (array) ( $sample['searchResults'] ?? array() );
 				shuffle( $featured );

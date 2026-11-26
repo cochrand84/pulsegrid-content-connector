@@ -3,6 +3,18 @@
 All notable changes to Pulsegrid Content Connector. Versions follow
 [Semantic Versioning](https://semver.org/); dates are the commit dates.
 
+## Unreleased
+
+### Security
+- Image proxy: a site-wide limit of 600 uncached images per minute (filter key
+  `site_images`), so requests spread across many IPs can't exhaust the API
+  quota with random image GUIDs.
+- Images larger than 10 MB from the API are rejected instead of cached.
+- `[pulsegrid featured="…"]` is capped at 50, like the setting, so a page
+  author can't request an unbounded result set from the API.
+- CI: third-party GitHub Actions are pinned to commit SHAs, including the
+  WordPress.org deploy step that receives the SVN credentials.
+
 ## 0.6.1 — 2026-11-16
 
 ### Changed
