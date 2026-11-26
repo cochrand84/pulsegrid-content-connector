@@ -16,6 +16,9 @@ defined( 'ABSPATH' ) || exit;
 
 class PGCC_API_Source implements PGCC_Source {
 
+	/** Largest image binary accepted from the API (bytes); keeps the disk cache bounded. */
+	const MAX_IMAGE_BYTES = 10485760;
+
 	/** @var string */
 	private $base_url;
 
@@ -85,8 +88,9 @@ class PGCC_API_Source implements PGCC_Source {
 		$response = wp_remote_get(
 			$this->base_url . 'content/' . rawurlencode( $guid ) . '/' . $this->lang,
 			array(
-				'timeout' => 15,
-				'headers' => $this->headers( false ),
+				'timeout'             => 15,
+				'headers'             => $this->headers( false ),
+				'limit_response_size' => self::MAX_IMAGE_BYTES + 1,
 			)
 		);
 
@@ -98,7 +102,7 @@ class PGCC_API_Source implements PGCC_Source {
 		$type = (string) wp_remote_retrieve_header( $response, 'content-type' );
 		$body = (string) wp_remote_retrieve_body( $response );
 
-		if ( $code >= 400 || '' === $body || 0 !== strpos( strtolower( $type ), 'image/' ) ) {
+		if ( $code >= 400 || '' === $body || strlen( $body ) > self::MAX_IMAGE_BYTES || 0 !== strpos( strtolower( $type ), 'image/' ) ) {
 			return new WP_Error( 'pgcc_image_unavailable', sprintf( 'Mayo API returned HTTP %d for image.', $code ) );
 		}
 
